@@ -1,0 +1,7 @@
+*.db filter=lfs diff=lfs merge=lfs -text
+api-gateway/data/transactions/** filter=lfs diff=lfs merge=lfs -text
+control-panel/data/transactions/** filter=lfs diff=lfs merge=lfs -text
+home/data/transactions/** filter=lfs diff=lfs merge=lfs -text
+learner/data/transactions/** filter=lfs diff=lfs merge=lfs -text
+school/data/transactions/** filter=lfs diff=lfs merge=lfs -text
+search-platform/data/transactions/** filter=lfs diff=lfs merge=lfs -text
