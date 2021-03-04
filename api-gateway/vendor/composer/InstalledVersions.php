@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'b85685dc4e21fcc07c8d6a1e79b05e4104f0d2df',
+    'reference' => '018f91028a2ff08a3fdf10c307bbeb679433ac85',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -132,12 +132,12 @@ private static $installed = array (
     ),
     'facade/ignition' => 
     array (
-      'pretty_version' => '2.5.13',
-      'version' => '2.5.13.0',
+      'pretty_version' => '2.5.14',
+      'version' => '2.5.14.0',
       'aliases' => 
       array (
       ),
-      'reference' => '5e9ef386aaad9985cee2ac23281a27568d083b7e',
+      'reference' => '17097f7a83e200d90d1cf9f4d1b35c1001513a47',
     ),
     'facade/ignition-contracts' => 
     array (
@@ -469,7 +469,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'b85685dc4e21fcc07c8d6a1e79b05e4104f0d2df',
+      'reference' => '018f91028a2ff08a3fdf10c307bbeb679433ac85',
     ),
     'laravel/sail' => 
     array (
@@ -784,8 +784,8 @@ private static $installed = array (
     array (
       'provided' => 
       array (
-        0 => '1.0',
-        1 => '1.0.0',
+        0 => '1.0.0',
+        1 => '1.0',
       ),
     ),
     'psr/simple-cache' => 
