@@ -1,0 +1,90 @@
+version: "3.5"
+
+services:
+
+  api-gateway:
+    container_name: api-gateway
+    hostname: api.local
+    build:
+      context: .
+      dockerfile: docker/api-gateway/Dockerfile
+    ports:
+      - 9900:80
+    volumes:
+      - ./api-gateway:/var/www
+
+  home:
+    container_name: home-service
+    hostname: home.local
+    build:
+      context: .
+      dockerfile: docker/home/Dockerfile
+    ports:
+      - 9901:80
+    volumes:
+      - ./home:/var/www
+
+  learner:
+    container_name: learner-service
+    hostname: learner.local
+    build:
+      context: .
+      dockerfile: docker/learner/Dockerfile
+    ports:
+      - 9902:80
+    volumes:
+      - ./learner:/var/www
+
+  school:
+    container_name: school-service
+    hostname: school.local
+    build:
+      context: .
+      dockerfile: docker/school/Dockerfile
+    ports:
+      - 9903:80
+    volumes:
+      - ./school:/var/www
+
+  controlpanel:
+    container_name: control-panel-service
+    hostname: controlpanel.local
+    build:
+      context: .
+      dockerfile: docker/control-panel/Dockerfile
+    ports:
+      - 9904:80
+    volumes:
+      - ./control-panel:/var/www
+
+  search:
+    container_name: search-platform-service
+    hostname: search.local
+    build:
+      context: .
+      dockerfile: docker/search-platform/Dockerfile
+    ports:
+      - 9905:80
+    volumes:
+      - ./search-platform:/var/www
+
+  neo4j:
+    image: neo4j:latest
+    network_mode: "bridge"
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      - NEO4J_dbms_security_procedures_unrestricted=apoc.*
+      - NEO4J_apoc_import_file_enabled=true
+      - NEO4J_dbms_shell_enabled=true
+#    volumes:
+#      - ./plugins:/plugins
+#      - ./data:/data
+#      - ./import:/import
+  redis:
+    container_name: redis
+    image: redis:latest
+networks:
+  default:
+    name: core-network
