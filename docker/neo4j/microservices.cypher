@@ -1,0 +1,2 @@
+CREATE (learner:Learner {email:'alexandrahoinoiu@gmail.com', password:'$2y$10$Hc.noQshNew7ImwM/iwPdeYJyBHFcyUSkmuJes8tKiYuYb.xeVblW'})
+CREATE (school:School {email:'alexandrahoinoiu@gmail.com', password:'$2y$10$Hc.noQshNew7ImwM/iwPdeYJyBHFcyUSkmuJes8tKiYuYb.xeVblW'});

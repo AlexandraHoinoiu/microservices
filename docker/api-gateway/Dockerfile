@@ -9,6 +9,8 @@ RUN a2enmod php7.4
 RUN a2enmod rewrite
 
 RUN apt-get install -y vim
+RUN apt-get install -y php-mbstring
+
 
 COPY ./docker/api-gateway/service-vhost.conf /etc/apache2/sites-available/000-default.conf
 COPY ./docker/api-gateway/entrypoint.sh /usr/sbin/entrypoint.sh
