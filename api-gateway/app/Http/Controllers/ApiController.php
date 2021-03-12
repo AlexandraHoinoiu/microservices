@@ -4,7 +4,7 @@
 namespace App\Http\Controllers;
 
 
-class Test extends Controller
+class ApiController extends Controller
 {
 
     public function test()

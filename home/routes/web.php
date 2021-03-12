@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\TestConnectionNeo4j;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [TestConnectionNeo4j::class, 'index']);
+Route::post('/checkUser', [HomeController::class, 'checkUser']);
+Route::post('/storeUser', [HomeController::class, 'storeUser']);
