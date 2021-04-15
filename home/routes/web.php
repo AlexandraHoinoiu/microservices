@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/checkUser', [HomeController::class, 'checkUser']);
 Route::post('/storeUser', [HomeController::class, 'storeUser']);
+Route::post("/signUp", [LoginController::class, 'signUp']);
+Route::post("/signIn", [LoginController::class, 'signIn']);
+Route::get("user/{type}/{email}", [LoginController::class, 'userDetail']);
