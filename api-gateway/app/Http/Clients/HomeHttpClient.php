@@ -6,6 +6,7 @@ namespace App\Http\Clients;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\BadResponseException;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class HomeHttpClient
@@ -14,39 +15,40 @@ class HomeHttpClient
 
     public function __construct()
     {
-        $this->client = new Client(['base_uri' => config('app_services.url_services')]);
+        $this->client = new Client(['base_uri' => config('app_services.url_services.home')]);
     }
 
     public function signIn($email, $password, $type)
     {
         try {
-            $response = $this->client->request('POST', '/signIn',
-                http_build_query([
-                    'email' => $email,
-                    'password' => $password,
-                    'type' => $type
-                ]));
-        } catch (BadResponseException $exception) {
-            throw new HttpException(
-                $exception->getCode(),
-                json_decode($exception->getResponse()->getBody()->getContents())
+            $jsonBody = json_encode([
+                'email' => $email,
+                'password' => $password,
+                'type' => $type
+            ]);
+            $response = $this->client->request(
+                'POST',
+                '/signIn',
+                ['body' => $jsonBody, 'headers' => ['Content-Type' => 'application/json']]
             );
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
         }
-
-        return json_decode($response->getBody()->getContents());
     }
 
     public function signUp($data)
     {
         try {
-            $response = $this->client->request('POST', '/signIn', http_build_query($data));
-        } catch (BadResponseException $exception) {
-            throw new HttpException(
-                $exception->getCode(),
-                json_decode($exception->getResponse()->getBody()->getContents())
+            $jsonBody = json_encode($data);
+            $response = $this->client->request(
+                'POST',
+                '/signUp',
+                ['body' => $jsonBody, 'headers' => ['Content-Type' => 'application/json']]
             );
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
         }
-
-        return json_decode($response->getBody()->getContents());
     }
 }

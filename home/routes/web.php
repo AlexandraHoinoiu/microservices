@@ -1,22 +1,23 @@
 <?php
 
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FollowController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::post('/checkUser', [HomeController::class, 'checkUser']);
-Route::post('/storeUser', [HomeController::class, 'storeUser']);
+/** LOGIN ROUTES */
 Route::post("/signUp", [LoginController::class, 'signUp']);
 Route::post("/signIn", [LoginController::class, 'signIn']);
-Route::get("user/{type}/{email}", [LoginController::class, 'userDetail']);
+/** END LOGIN ROUTES */
+
+/** POSTS ROUTES */
+Route::post("/posts", [PostsController::class, 'getFeedPosts']);
+Route::post("/createPost", [PostsController::class, 'createPost']);
+Route::post("/deletePost", [PostsController::class, 'deletePost']);
+Route::post("/editPost", [PostsController::class, 'editPost']);
+/** END POSTS ROUTES */
+
+/** FOLLOW ROUTES */
+Route::post("/follow", [FollowController::class, 'followUser']);
+Route::post("/unfollow", [FollowController::class, 'unfollowUser']);
+/** END FOLLOW ROUTES */

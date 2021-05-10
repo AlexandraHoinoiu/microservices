@@ -22,7 +22,7 @@ class LoginController extends Controller
     public function __construct(Request $request)
     {
         $label = $request->get('type', '');
-        if ($label == LearnerModel::$LABEL) {
+        if ($label == 'Learner') {
             $this->signUpParams = [
                 "first_name" => "required",
                 "last_name" => "required",

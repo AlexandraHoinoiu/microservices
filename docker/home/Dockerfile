@@ -11,6 +11,7 @@ RUN a2enmod rewrite
 RUN apt-get install -y vim
 RUN apt-get install -y php-mbstring
 RUN apt-get install -y php-xdebug
+RUN apt-get install -y php-xml
 
 COPY ./docker/home/service-vhost.conf /etc/apache2/sites-available/000-default.conf
 COPY ./docker/home/entrypoint.sh /usr/sbin/entrypoint.sh

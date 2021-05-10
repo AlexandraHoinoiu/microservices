@@ -12,6 +12,8 @@ services:
       - 9900:80
     volumes:
       - ./api-gateway:/var/www
+    extra_hosts:
+      - "home.local:172.20.0.4"
 
   home:
     container_name: home-service
@@ -88,3 +90,7 @@ services:
 
 volumes:
   neo4j:
+
+networks:
+  default:
+    name: microservices

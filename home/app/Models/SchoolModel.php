@@ -28,4 +28,14 @@ class SchoolModel extends Neo4jModel
         $label = self::$LABEL;
         return $this->neo4jClient->run("MATCH (user:$label {email: '$email'}) RETURN user");
     }
+
+    public function createPost($postId, $userId): Vector
+    {
+        $label = self::$LABEL;
+        return $this->neo4jClient->run("MATCH(n:Post) WHERE id(n) = $postId
+        MATCH(m:$label) WHERE id(m) = $userId
+        CREATE (n)-[r:CREATED_BY]->(m)
+        RETURN r"
+        );
+    }
 }
