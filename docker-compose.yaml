@@ -26,27 +26,17 @@ services:
     volumes:
       - ./home:/var/www
 
-  learner:
-    container_name: learner-service
-    hostname: learner.local
+  profile:
+    container_name: profile-service
+    hostname: profile.local
     build:
       context: .
-      dockerfile: docker/learner/Dockerfile
+      dockerfile: docker/profile/Dockerfile
     ports:
       - 9902:80
     volumes:
-      - ./learner:/var/www
+      - ./profile:/var/www
 
-  school:
-    container_name: school-service
-    hostname: school.local
-    build:
-      context: .
-      dockerfile: docker/school/Dockerfile
-    ports:
-      - 9903:80
-    volumes:
-      - ./school:/var/www
 
   controlpanel:
     container_name: control-panel-service
@@ -55,7 +45,7 @@ services:
       context: .
       dockerfile: docker/control-panel/Dockerfile
     ports:
-      - 9904:80
+      - 9903:80
     volumes:
       - ./control-panel:/var/www
 
@@ -66,7 +56,7 @@ services:
       context: .
       dockerfile: docker/search-platform/Dockerfile
     ports:
-      - 9905:80
+      - 9904:80
     volumes:
       - ./search-platform:/var/www
 
