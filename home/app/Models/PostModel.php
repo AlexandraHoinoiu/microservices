@@ -38,28 +38,28 @@ class PostModel extends Neo4jModel
     {
         $posts = [];
         $result = $this->neo4jClient->run("MATCH (n:$type)-[:FOLLOWS]->(:Learner)--(p:$this->label)
-            where id(n) = $userId RETURN p");
+            where id(n) = $userId RETURN p, id(p) as id");
         if ($result->count()) {
             foreach ($result as $post) {
-                $posts[] = $post->get('p');
+                $posts[] = array_merge($post->get('p'), ['id' => $post->get('id')]);
             }
         }
         $result = $this->neo4jClient->run("MATCH (n:$type)-[:FOLLOWS]->(:School)--(p:$this->label)
             where id(n) = $userId
-            RETURN p"
+            RETURN p , id(p) as id"
         );
         if ($result->count()) {
             foreach ($result as $post) {
-                $posts[] = $post->get('p');
+                $posts[] = array_merge($post->get('p'), ['id' => $post->get('id')]);
             }
         }
         $result = $this->neo4jClient->run("MATCH (n:$type)<-[:CREATED_BY]-(p:$this->label)
             where id(n) = $userId
-            RETURN p"
+            RETURN p, id(p) as id"
         );
         if ($result->count()) {
             foreach ($result as $post) {
-                $posts[] = $post->get('p');
+                $posts[] = array_merge($post->get('p'), ['id' => $post->get('id')]);
             }
         }
         return $posts;
@@ -71,6 +71,34 @@ class PostModel extends Neo4jModel
             WHERE ID(post) = $postId
             SET post.text = '$newText'
             RETURN post"
+        );
+    }
+
+    public function modifyLikes($postId, $number): Vector
+    {
+        return $this->neo4jClient->run("MATCH (post:$this->label)
+            WHERE ID(post) = $postId
+            SET post.likes = post.likes + $number
+            RETURN post"
+        );
+    }
+
+    public function modifyDislikes($postId, $number): Vector
+    {
+        return $this->neo4jClient->run("MATCH (post:$this->label)
+            WHERE ID(post) = $postId
+            SET post.dislikes = post.dislikes + $number
+            RETURN post"
+        );
+    }
+
+    public function getUser($postId): Vector
+    {
+        return $this->neo4jClient->run("MATCH (user:Learner)<-[:CREATED_BY]-(p:$this->label)
+            WHERE id(p) = $postId RETURN user, labels(user) as type, id(user) as id
+            UNION
+            MATCH (user:School)<-[:CREATED_BY]-(p:$this->label)
+            WHERE id(p) = $postId RETURN user, labels(user) as type, id(user) as id"
         );
     }
 }
