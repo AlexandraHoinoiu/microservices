@@ -19,19 +19,19 @@ class PostsController
     private PostModel $postModel;
     private Neo4jModel $userModel;
     private string $type;
+    private AwsClient $awsClient;
 
     public function __construct()
     {
         $this->postModel = new PostModel();
+        $this->awsClient = new AwsClient();
     }
 
     public function getFeedPosts(Request $request): JsonResponse
     {
-//        $awsClient = new AwsClient();
-//        var_dump($awsClient->getFileUrl('3.jpeg'));exit;
         try {
             $this->getType($request);
-            $limit = config('posts.limitPosts');
+            $limit = config('home.limitPosts');
             $userId = $request->get('userId');
             $page = $request->get('page', 1);
             if ($page <= 0) {
@@ -67,7 +67,18 @@ class PostsController
         try {
             $this->getType($request);
             $userId = $request->get('userId');
-            $postId = $this->postModel->create($request->all());
+            $text = $request->get('text');
+            $fileName = $request->get('fileName', '');
+            $dataFile = $request->get('dataFile', '');
+            $imgUrl = "";
+            if(!empty($fileName) && !empty($dataFile)) {
+                $data = explode( ',', $dataFile );
+                $data = base64_decode($data[1]);
+                $fileName = time()."-".$fileName;
+                $this->awsClient->uploadFile($data, 'users/'.$userId . '/posts/'.$fileName);
+                $imgUrl = $this->awsClient->getFileUrl('users/'.$userId . '/posts/'.$fileName);
+            }
+            $postId = $this->postModel->create($text, $imgUrl);
             if (!is_null($postId)) {
                 $result = $this->userModel->createPost($postId, $userId);
                 if ($result->count() > 0) {

@@ -18,15 +18,22 @@ class SchoolModel extends Neo4jModel
             "CREATE (user:$label {
             email:'{$data["email"]}',
             password:'$hashPassword',
-            address:'{$data["address"]}',
-            name:'{$data["name"]}'
+            country:'-',
+            city:'-',
+            name:'{$data["name"]}',
+            profileImg:'{$data["imgPath"]}',
+            coverImg:'{$data["coverImg"]}',
+            description:'{$data["description"]}'
             })"
         );
     }
+
     public function getDataByEmail($email): Vector
     {
         $label = self::$LABEL;
-        return $this->neo4jClient->run("MATCH (user:$label {email: '$email'}) RETURN user");
+        return $this->neo4jClient->run("MATCH (user:$label {email: '$email'})
+            RETURN user, id(user) as id, labels(user) as type"
+        );
     }
 
     public function createPost($postId, $userId): Vector

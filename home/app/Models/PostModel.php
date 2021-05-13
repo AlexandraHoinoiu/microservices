@@ -10,15 +10,15 @@ class PostModel extends Neo4jModel
 {
     public string $label = 'Post';
 
-    public function create($data): ?int
+    public function create($text, $imgPath): ?int
     {
         $createdAt = gmdate('Y-m-d H:i:s');
         $response = $this->neo4jClient->run(
             "CREATE (post:$this->label {
             createdAt:'$createdAt',
             updatedAt:'$createdAt',
-            text:'{$data['text']}',
-            imgPath:'{$data['imgPath']}',
+            text:'$text',
+            imgPath:'$imgPath',
             likes:0,
             dislikes:0
             }) return ID(post) as id"

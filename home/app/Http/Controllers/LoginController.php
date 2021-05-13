@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Clients\AwsClient;
 use App\Models\LearnerModel;
 use App\Models\Neo4jModel;
 use App\Models\SchoolModel;
@@ -18,11 +19,12 @@ class LoginController extends Controller
     private int $status_code = 200;
     private Neo4jModel $model;
     private array $signUpParams = [];
+    private string $label;
 
     public function __construct(Request $request)
     {
-        $label = $request->get('type', '');
-        if ($label == 'Learner') {
+        $this->label = $request->get('type', '');
+        if ($this->label == 'Learner') {
             $this->signUpParams = [
                 "first_name" => "required",
                 "last_name" => "required",
@@ -30,10 +32,9 @@ class LoginController extends Controller
                 "password" => "required",
             ];
             $this->model = new LearnerModel();
-        } else if ($label == SchoolModel::$LABEL) {
+        } else if ($this->label == SchoolModel::$LABEL) {
             $this->signUpParams = [
                 "name" => "required",
-                "address" => "required",
                 "email" => "required|email",
                 "password" => "required",
             ];
@@ -69,7 +70,13 @@ class LoginController extends Controller
                     "message" => "Email already registered!"
                 ]);
             }
-            $this->model->create($request->all());
+            $awsClient = new AwsClient();
+            $data = [
+                'imgPath' => $awsClient->getFileUrl(config("home.default.$this->label.profileImg")),
+                'coverImg' => $awsClient->getFileUrl(config("home.default.$this->label.coverImg")),
+                'description' => $awsClient->getFileUrl(config("home.default.$this->label.desc"))
+            ];
+            $this->model->create(array_merge($request->all(), $data));
             $results = $this->model->getDataByEmail($email);
             return response()->json([
                 "status" => $this->status_code,
@@ -110,7 +117,11 @@ class LoginController extends Controller
 
             $results = $this->model->getDataByEmail($email);
             if ($results->count()) {
-                $data = $results->first()->get('user');
+                $data = array_merge(
+                    $results->first()->get('user'),
+                    ['type' => $results->first()->get('type')[0]],
+                    ['id' => $results->first()->get('id')]
+                );
                 if (password_verify($password, $data['password'])) {
                     return response()->json([
                         "status" => $this->status_code,

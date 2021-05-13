@@ -17,15 +17,22 @@ class LearnerModel extends Neo4jModel
             "CREATE (user:$this->label {
             email:'{$data["email"]}',
             password:'$hashPassword',
+            country:'-',
+            city:'-',
             firstName:'{$data["first_name"]}',
-            lastName:'{$data["last_name"]}'
+            lastName:'{$data["last_name"]}',
+            profileImg:'{$data["imgPath"]}',
+            coverImg:'{$data["coverImg"]}',
+            description:'{$data["description"]}'
             })"
         );
     }
 
     public function getDataByEmail($email): Vector
     {
-        return $this->neo4jClient->run("MATCH (user:$this->label {email: '$email'}) RETURN user");
+        return $this->neo4jClient->run("MATCH (user:$this->label {email: '$email'})
+            RETURN user, id(user) as id, labels(user) as type"
+        );
     }
 
     public function getLearners(): Vector

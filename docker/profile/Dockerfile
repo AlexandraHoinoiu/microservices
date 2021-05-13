@@ -10,6 +10,8 @@ RUN a2enmod rewrite
 
 RUN apt-get install -y vim
 RUN apt-get install -y php-mbstring
+RUN apt-get install -y php-xdebug
+RUN apt-get install -y php-xml
 
 
 COPY ./docker/profile/service-vhost.conf /etc/apache2/sites-available/000-default.conf
@@ -37,6 +39,6 @@ COPY ./profile/public /var/www/public
 COPY ./profile/app /var/www/app
 COPY ./profile/bootstrap /var/www/bootstrap
 COPY ./profile/config /var/www/config
-COPY ./learner/routes /var/www/routes
+COPY ./profile/routes /var/www/routes
 
 CMD /usr/sbin/apache2ctl -D FOREGROUND

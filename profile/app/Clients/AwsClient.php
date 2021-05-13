@@ -34,13 +34,12 @@ class AwsClient
         $this->bucket = config('aws.bucket');
     }
 
-    public function uploadFile($body, $key): Result
+    public function uploadFile($body, $key)
     {
-        return $this->client->putObject([
+        $this->client->putObject([
             'Bucket' => $this->bucket,
             'Key' => $key,
-            'body' => $body,
-            'ACL' => 'public-read'
+            'Body' => $body,
         ]);
     }
 
