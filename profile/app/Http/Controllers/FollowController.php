@@ -85,4 +85,35 @@ class FollowController
         ]);
     }
 
+    public function checkUser(Request $request): JsonResponse
+    {
+        $followerEmail = $request->get('followerEmail');
+        $followedEmail = $request->get('followedEmail');
+        $followerType = $request->get('followerType');
+        $followedType = $request->get('followedType');
+        $result = $this->neo4jClient->run("MATCH (follower:$followerType {email: '$followerEmail'}),
+        (followed:$followedType {email: '$followedEmail'})
+        RETURN EXISTS((follower)-[:FOLLOWS]-(followed)) as result");
+        if ($result->count() <= 0) {
+            return response()->json([
+                "status" => 'failed',
+                "success" => false,
+                "message" => 'The users could not be found.'
+            ]);
+        }
+        if ($result->first()->get('result')) {
+            return response()->json([
+                "status" => 200,
+                "success" => true,
+                "followed" => true,
+                "message" => 'The user is already followed.'
+            ]);
+        }
+        return response()->json([
+            "status" => 200,
+            "success" => true,
+            "followed" => false,
+            "message" => 'The user is not followed.'
+        ]);
+    }
 }

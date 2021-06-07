@@ -17,7 +17,7 @@ class PostsProfileController extends Controller
         $this->postModel = new PostModel();
     }
 
-    public function getProfilePost(Request $request): JsonResponse
+    public function getProfilePosts(Request $request): JsonResponse
     {
         try {
             $limit = config('profile.limitPosts');
@@ -30,7 +30,7 @@ class PostsProfileController extends Controller
             $posts = $this->postModel->getProfilePosts($type, $userId);
             if (!empty($posts)) {
                 usort($posts, function ($a, $b) {
-                    return $a['createdAt'] <=> $b['createdAt'];
+                    return $b['createdAt'] <=> $a['createdAt'];
                 });
             }
             $posts = array_chunk($posts, $limit);

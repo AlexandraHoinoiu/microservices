@@ -66,7 +66,11 @@ class UserController extends Controller
             $response = $this->userModel->getFollowingUsers($userId);
             if ($response->count()) {
                 foreach ($response as $node) {
-                    $user[] = array_merge($node->get('user'), ['id' => $node->get('id')]);
+                    $users[] = array_merge(
+                    	$node->get('user'), 
+                    	['id' => $node->get('id')],
+                    	['type' => $node->get('type')[0]]
+                    );
                 }
             }
             return response()->json([

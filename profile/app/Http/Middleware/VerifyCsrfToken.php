@@ -12,6 +12,9 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        '/posts'
+        '/posts',
+        '/follow',
+        '/unfollow',
+        '/checkUserFollow'
     ];
 }

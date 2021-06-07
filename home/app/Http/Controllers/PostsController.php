@@ -40,7 +40,7 @@ class PostsController
             $posts = $this->postModel->getFeedPosts($userId, $this->type);
             if (!empty($posts)) {
                 usort($posts, function ($a, $b) {
-                    return $a['createdAt'] <=> $b['createdAt'];
+                    return $b['createdAt'] <=> $a['createdAt'];
                 });
             }
             $posts = array_chunk($posts, $limit);
@@ -71,12 +71,13 @@ class PostsController
             $fileName = $request->get('fileName', '');
             $dataFile = $request->get('dataFile', '');
             $imgUrl = "";
-            if(!empty($fileName) && !empty($dataFile)) {
-                $data = explode( ',', $dataFile );
-                $data = base64_decode($data[1]);
-                $fileName = time()."-".$fileName;
-                $this->awsClient->uploadFile($data, 'users/'.$userId . '/posts/'.$fileName);
-                $imgUrl = $this->awsClient->getFileUrl('users/'.$userId . '/posts/'.$fileName);
+            if (!empty($fileName) && !empty($dataFile)) {
+                $new_data = explode(";", $dataFile);
+                $data = explode(",", $new_data[1]);
+                file_put_contents(storage_path() . '/' . $fileName, base64_decode($data[1]));
+                $this->awsClient->uploadFile(storage_path() . '/' . $fileName, 'users/' . $userId . '/posts/' . $fileName);
+                $imgUrl = $this->awsClient->getFileUrl('users/' . $userId . '/posts/' . $fileName);
+                unlink(storage_path() . '/' . $fileName);
             }
             $postId = $this->postModel->create($text, $imgUrl);
             if (!is_null($postId)) {
