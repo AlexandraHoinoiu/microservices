@@ -65,6 +65,10 @@ trait DatabaseRule
         if (is_subclass_of($table, Model::class)) {
             $model = new $table;
 
+            if (Str::contains($model->getTable(), '.')) {
+                return $table;
+            }
+
             return implode('.', array_map(function (string $part) {
                 return trim($part, '.');
             }, array_filter([$model->getConnectionName(), $model->getTable()])));
@@ -196,11 +200,7 @@ trait DatabaseRule
     protected function formatWheres()
     {
         return collect($this->wheres)->map(function ($where) {
-            if (is_bool($where['value'])) {
-                return $where['column'].','.($where['value'] ? 'true' : 'false');
-            } else {
-                return $where['column'].','.'"'.str_replace('"', '""', $where['value']).'"';
-            }
+            return $where['column'].','.'"'.str_replace('"', '""', $where['value']).'"';
         })->implode(',');
     }
 }
