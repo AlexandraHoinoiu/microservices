@@ -22,7 +22,3 @@ Route::get("/remove-like/{postId}", [PostsController::class, 'removeLikePost']);
 Route::get("/remove-dislike/{postId}", [PostsController::class, 'removeDislikePost']);
 /** END POSTS ROUTES */
 
-/** FOLLOW ROUTES */
-Route::post("/follow", [FollowController::class, 'followUser']);
-Route::post("/unfollow", [FollowController::class, 'unfollowUser']);
-/** END FOLLOW ROUTES */

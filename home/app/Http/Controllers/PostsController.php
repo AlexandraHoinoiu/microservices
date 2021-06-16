@@ -161,43 +161,9 @@ class PostsController
         ]);
     }
 
-    public function dislikePost($postId): JsonResponse
-    {
-        $response = $this->postModel->modifyDislikes($postId, 1);
-        if ($response->count() > 0 && $response->first()->get('post')) {
-            return response()->json([
-                "status" => 200,
-                "success" => true,
-                "message" => 'OK'
-            ]);
-        }
-        return response()->json([
-            "status" => 'failed',
-            "success" => false,
-            "message" => 'Error'
-        ]);
-    }
-
     public function removeLikePost($postId): JsonResponse
     {
         $response = $this->postModel->modifyLikes($postId, -1);
-        if ($response->count() > 0 && $response->first()->get('post')) {
-            return response()->json([
-                "status" => 200,
-                "success" => true,
-                "message" => 'OK'
-            ]);
-        }
-        return response()->json([
-            "status" => 'failed',
-            "success" => false,
-            "message" => 'Error'
-        ]);
-    }
-
-    public function removeDislikePost($postId): JsonResponse
-    {
-        $response = $this->postModel->modifyDislikes($postId, -1);
         if ($response->count() > 0 && $response->first()->get('post')) {
             return response()->json([
                 "status" => 200,

@@ -17,6 +17,7 @@ class LearnerModel extends Neo4jModel
             RETURN user"
         );
     }
+
     public function getFollowingUsers($userId): Vector
     {
         return $this->neo4jClient->run("MATCH (n:$this->label)-[:FOLLOWS]->(user:Learner)
@@ -25,6 +26,37 @@ class LearnerModel extends Neo4jModel
             UNION
             MATCH (n:$this->label)-[:FOLLOWS]->(user:School)
             WHERE id(n) = $userId
+            RETURN user, id(user) as id, labels(user) as type"
+        );
+    }
+
+    public function changeProfilePhoto($userId, $imgPath): Vector
+    {
+        return $this->neo4jClient->run("MATCH (user:$this->label)
+            WHERE ID(user) = $userId
+            SET user.profileImg = '$imgPath'
+            RETURN user"
+        );
+    }
+
+    public function changeCoverPhoto($userId, $imgPath): Vector
+    {
+        return $this->neo4jClient->run("MATCH (user:$this->label)
+            WHERE ID(user) = $userId
+            SET user.coverImg = '$imgPath'
+            RETURN user"
+        );
+    }
+
+    public function editUser($request): Vector
+    {
+        return $this->neo4jClient->run("MATCH (user:$this->label)
+            WHERE ID(user) = $request->userId
+            SET user += {country: '$request->country', city: '$request->city',
+            description: '$request->description',
+            firstName: '$request->firstName',
+            lastName: '$request->lastName'
+            }
             RETURN user, id(user) as id, labels(user) as type"
         );
     }

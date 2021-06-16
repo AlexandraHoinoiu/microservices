@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Laudis\Neo4j\ClientBuilder;
@@ -115,5 +116,40 @@ class FollowController
             "followed" => false,
             "message" => 'The user is not followed.'
         ]);
+    }
+
+    public function suggestedUsers($type, $userEmail)
+    {
+        try {
+            $result = $this->neo4jClient->run("match (n:Learner)
+            where not (n)<-[:FOLLOWS]-(:$type{email:'$userEmail'})
+            and n.email <> '$userEmail'
+            return n, id(n) as id, labels(n) as type
+            union
+            match (n:School) where not (n)<-[:FOLLOWS]-(:$type{email:'$userEmail'})
+            and n.email <> '$userEmail'
+            return n, id(n) as id, labels(n) as type");
+            if ($result->count() > 0) {
+                foreach ($result as $user) {
+                    $users[] = array_merge(
+                        $user->get('n'),
+                        ['id' => $user->get('id')],
+                        ['type' => $user->get('type')[0]]
+                    );
+                }
+                return response()->json([
+                    "status" => 200,
+                    "success" => true,
+                    "users" => empty($users) ? [] : $users
+                ]);
+            }
+            throw new Exception('Something was wrong!');
+        } catch (Exception $e) {
+            return response()->json([
+                "status" => 'failed',
+                "success" => false,
+                "message" => $e->getMessage()
+            ]);
+        }
     }
 }

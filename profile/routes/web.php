@@ -11,4 +11,7 @@ Route::get("/user-following/{type}/{userId}", [UserController::class, 'getFollow
 Route::post("/follow", [FollowController::class, 'followUser']);
 Route::post("/unfollow", [FollowController::class, 'unfollowUser']);
 Route::post("/checkUserFollow", [FollowController::class, 'checkUser']);
+Route::post("/user/changePhoto", [UserController::class, 'changePhoto']);
+Route::post("/user/editInfo", [UserController::class, 'editUser']);
+Route::get("suggested-users/{type}/{email}",[FollowController::class, "suggestedUsers"]);
 

@@ -15,6 +15,7 @@ class VerifyCsrfToken extends Middleware
         '/posts',
         '/follow',
         '/unfollow',
-        '/checkUserFollow'
+        '/checkUserFollow',
+        '/user/*'
     ];
 }
