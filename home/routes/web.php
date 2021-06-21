@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\FollowController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +15,7 @@ Route::get("/post/user/{postId}", [PostsController::class, 'getUserPost']);
 Route::post("/createPost", [PostsController::class, 'createPost']);
 Route::post("/deletePost", [PostsController::class, 'deletePost']);
 Route::post("/editPost", [PostsController::class, 'editPost']);
+Route::post("/reportPost", [PostsController::class, 'reportPost']);
 Route::get("/like/{postId}", [PostsController::class, 'likePost']);
 Route::get("/dislike/{postId}", [PostsController::class, 'dislikePost']);
 Route::get("/remove-like/{postId}", [PostsController::class, 'removeLikePost']);

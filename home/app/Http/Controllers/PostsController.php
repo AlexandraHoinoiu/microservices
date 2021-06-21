@@ -62,6 +62,31 @@ class PostsController
         }
     }
 
+    public function reportPost(Request $request): JsonResponse
+    {
+        try {
+            $this->getType($request);
+            $userId = $request->get('userId');
+            $postId = $request->get('postId');
+            $reportType = $request->get('reportType');
+            $result = $this->userModel->reportPost($userId, $postId, $reportType);
+            if ($result->count() > 0) {
+                return response()->json([
+                    "status" => 200,
+                    "success" => true,
+                    "message" => 'The post was reported.'
+                ]);
+            }
+            throw new Exception('Something went wrong!');
+        } catch (Exception $e) {
+            return response()->json([
+                "status" => 'failed',
+                "success" => false,
+                "message" => $e->getMessage()
+            ]);
+        }
+    }
+
     public function createPost(Request $request): JsonResponse
     {
         try {
@@ -207,7 +232,7 @@ class PostsController
         $this->type = $request->get('type', '');
         if ($this->type == 'Learner') {
             $this->userModel = new LearnerModel();
-        } else if ($this->type == SchoolModel::$LABEL) {
+        } else if ($this->type == 'School') {
             $this->userModel = new SchoolModel();
         } else {
             throw new Exception('Unrecognized type.');

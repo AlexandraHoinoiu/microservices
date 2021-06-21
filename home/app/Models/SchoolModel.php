@@ -4,18 +4,15 @@
 namespace App\Models;
 
 
-use Ds\Vector;
-
-class SchoolModel extends Neo4jModel
+class SchoolModel extends UserModel
 {
-    public static string $LABEL = 'School';
+    protected string $label = 'School';
 
     public function create($data): void
     {
-        $label = self::$LABEL;
         $hashPassword = password_hash($data['password'], PASSWORD_DEFAULT);
         $this->neo4jClient->run(
-            "CREATE (user:$label {
+            "CREATE (user:$this->label {
             email:'{$data["email"]}',
             password:'$hashPassword',
             country:'-',
@@ -25,24 +22,6 @@ class SchoolModel extends Neo4jModel
             coverImg:'{$data["coverImg"]}',
             description:'{$data["description"]}'
             })"
-        );
-    }
-
-    public function getDataByEmail($email): Vector
-    {
-        $label = self::$LABEL;
-        return $this->neo4jClient->run("MATCH (user:$label {email: '$email'})
-            RETURN user, id(user) as id, labels(user) as type"
-        );
-    }
-
-    public function createPost($postId, $userId): Vector
-    {
-        $label = self::$LABEL;
-        return $this->neo4jClient->run("MATCH(n:Post) WHERE id(n) = $postId
-        MATCH(m:$label) WHERE id(m) = $userId
-        CREATE (n)-[r:CREATED_BY]->(m)
-        RETURN r"
         );
     }
 }

@@ -94,7 +94,7 @@ class FollowController
         $followedType = $request->get('followedType');
         $result = $this->neo4jClient->run("MATCH (follower:$followerType {email: '$followerEmail'}),
         (followed:$followedType {email: '$followedEmail'})
-        RETURN EXISTS((follower)-[:FOLLOWS]-(followed)) as result");
+        RETURN EXISTS((follower)-[:FOLLOWS]->(followed)) as result");
         if ($result->count() <= 0) {
             return response()->json([
                 "status" => 'failed',
@@ -118,7 +118,7 @@ class FollowController
         ]);
     }
 
-    public function suggestedUsers($type, $userEmail)
+    public function suggestedUsers($type, $userEmail, $limit = '')
     {
         try {
             $result = $this->neo4jClient->run("match (n:Learner)
@@ -137,6 +137,11 @@ class FollowController
                         ['type' => $user->get('type')[0]]
                     );
                 }
+                shuffle($users);
+                if (!empty($limit) && $limit < count($users)){
+                    $users = array_slice($users, 0, $limit);
+                }
+
                 return response()->json([
                     "status" => 200,
                     "success" => true,

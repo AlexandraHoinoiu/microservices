@@ -1,0 +1,8 @@
+.php_cs.cache
+cache/
+vendor/
+phpunit.xml
+.phpunit.result.cache
+.idea/
+clover.xml
+cc-test-reporter

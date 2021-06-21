@@ -20,5 +20,6 @@ class VerifyCsrfToken extends Middleware
         '/posts',
         '/deletePost',
         '/editPost',
+        '/reportPost'
     ];
 }

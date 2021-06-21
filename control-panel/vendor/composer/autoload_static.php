@@ -7,34 +7,36 @@ namespace Composer\Autoload;
 class ComposerStaticInitd94e368f76baf5151322870cf43a8fab
 {
     public static $files = array (
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
-        'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0d59ee240a4cd96ddbb4ff164fccea4d' => __DIR__ . '/..' . '/symfony/polyfill-php73/bootstrap.php',
-        '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
-        'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
-        'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
-        'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
-        '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
+        'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         '265b4faa2b3a9766332744949e83bf97' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/helpers.php',
         'c7a3c339e7e14b60e06a2d7fcce9476b' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Events/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
+        '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
+        '9c67151ae59aff4788964ce8eb2a0f43' => __DIR__ . '/..' . '/clue/stream-filter/src/functions_include.php',
         '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
+        '8cff32064859f4559445b89279f3199c' => __DIR__ . '/..' . '/php-http/message/src/filters.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
     );
 
@@ -125,6 +127,8 @@ class ComposerStaticInitd94e368f76baf5151322870cf43a8fab
             'League\\MimeTypeDetection\\' => 25,
             'League\\Flysystem\\' => 17,
             'League\\CommonMark\\' => 18,
+            'Laudis\\TypedEnum\\' => 17,
+            'Laudis\\Neo4j\\' => 13,
             'Laravel\\Tinker\\' => 15,
             'Laravel\\Sail\\' => 13,
         ),
@@ -132,6 +136,11 @@ class ComposerStaticInitd94e368f76baf5151322870cf43a8fab
         array (
             'Illuminate\\Support\\' => 19,
             'Illuminate\\' => 11,
+        ),
+        'H' => 
+        array (
+            'Http\\Message\\' => 13,
+            'Http\\Discovery\\' => 15,
         ),
         'G' => 
         array (
@@ -155,6 +164,7 @@ class ComposerStaticInitd94e368f76baf5151322870cf43a8fab
         ),
         'D' => 
         array (
+            'Ds\\' => 3,
             'Dotenv\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
             'Doctrine\\Inflector\\' => 19,
@@ -166,11 +176,13 @@ class ComposerStaticInitd94e368f76baf5151322870cf43a8fab
         'C' => 
         array (
             'Cron\\' => 5,
+            'Clue\\StreamFilter\\' => 18,
             'Carbon\\' => 7,
         ),
         'B' => 
         array (
             'Brick\\Math\\' => 11,
+            'Bolt\\' => 5,
         ),
         'A' => 
         array (
@@ -187,8 +199,8 @@ class ComposerStaticInitd94e368f76baf5151322870cf43a8fab
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -337,6 +349,7 @@ class ComposerStaticInitd94e368f76baf5151322870cf43a8fab
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -386,6 +399,14 @@ class ComposerStaticInitd94e368f76baf5151322870cf43a8fab
         array (
             0 => __DIR__ . '/..' . '/league/commonmark/src',
         ),
+        'Laudis\\TypedEnum\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laudis/typed-enum/src',
+        ),
+        'Laudis\\Neo4j\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laudis/neo4j-php-client/src',
+        ),
         'Laravel\\Tinker\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
@@ -402,6 +423,15 @@ class ComposerStaticInitd94e368f76baf5151322870cf43a8fab
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
+        ),
+        'Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-http/message-factory/src',
+            1 => __DIR__ . '/..' . '/php-http/message/src',
+        ),
+        'Http\\Discovery\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-http/discovery/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
@@ -447,6 +477,10 @@ class ComposerStaticInitd94e368f76baf5151322870cf43a8fab
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
         ),
+        'Ds\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-ds/php-ds/src',
+        ),
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
@@ -479,6 +513,10 @@ class ComposerStaticInitd94e368f76baf5151322870cf43a8fab
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
         ),
+        'Clue\\StreamFilter\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/clue/stream-filter/src',
+        ),
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
@@ -486,6 +524,10 @@ class ComposerStaticInitd94e368f76baf5151322870cf43a8fab
         'Brick\\Math\\' => 
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
+        ),
+        'Bolt\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/stefanak-michal/bolt/src',
         ),
         'Asm89\\Stack\\' => 
         array (
@@ -529,6 +571,41 @@ class ComposerStaticInitd94e368f76baf5151322870cf43a8fab
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/CorsService.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+        'Bolt\\Bolt' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/Bolt.php',
+        'Bolt\\PackStream\\IPacker' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/PackStream/IPacker.php',
+        'Bolt\\PackStream\\IUnpacker' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/PackStream/IUnpacker.php',
+        'Bolt\\PackStream\\v1\\Packer' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/PackStream/v1/Packer.php',
+        'Bolt\\PackStream\\v1\\Unpacker' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/PackStream/v1/Unpacker.php',
+        'Bolt\\connection\\AConnection' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/connection/AConnection.php',
+        'Bolt\\connection\\IConnection' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/connection/IConnection.php',
+        'Bolt\\connection\\Socket' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/connection/Socket.php',
+        'Bolt\\connection\\StreamSocket' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/connection/StreamSocket.php',
+        'Bolt\\error\\ConnectException' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/error/ConnectException.php',
+        'Bolt\\error\\MessageException' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/error/MessageException.php',
+        'Bolt\\error\\PackException' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/error/PackException.php',
+        'Bolt\\error\\UnpackException' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/error/UnpackException.php',
+        'Bolt\\protocol\\AProtocol' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/protocol/AProtocol.php',
+        'Bolt\\protocol\\IProtocol' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/protocol/IProtocol.php',
+        'Bolt\\protocol\\V1' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/protocol/V1.php',
+        'Bolt\\protocol\\V2' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/protocol/V2.php',
+        'Bolt\\protocol\\V3' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/protocol/V3.php',
+        'Bolt\\protocol\\V4' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/protocol/V4.php',
+        'Bolt\\protocol\\V4_1' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/protocol/V4_1.php',
+        'Bolt\\protocol\\V4_2' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/protocol/V4_2.php',
+        'Bolt\\structures\\Date' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/structures/Date.php',
+        'Bolt\\structures\\DateTime' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/structures/DateTime.php',
+        'Bolt\\structures\\DateTimeZoneId' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/structures/DateTimeZoneId.php',
+        'Bolt\\structures\\Duration' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/structures/Duration.php',
+        'Bolt\\structures\\IStructure' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/structures/IStructure.php',
+        'Bolt\\structures\\LocalDateTime' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/structures/LocalDateTime.php',
+        'Bolt\\structures\\LocalTime' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/structures/LocalTime.php',
+        'Bolt\\structures\\Node' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/structures/Node.php',
+        'Bolt\\structures\\Path' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/structures/Path.php',
+        'Bolt\\structures\\Point2D' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/structures/Point2D.php',
+        'Bolt\\structures\\Point3D' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/structures/Point3D.php',
+        'Bolt\\structures\\Relationship' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/structures/Relationship.php',
+        'Bolt\\structures\\Time' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/structures/Time.php',
+        'Bolt\\structures\\UnboundRelationship' => __DIR__ . '/..' . '/stefanak-michal/bolt/src/structures/UnboundRelationship.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
         'Brick\\Math\\BigNumber' => __DIR__ . '/..' . '/brick/math/src/BigNumber.php',
@@ -617,6 +694,7 @@ class ComposerStaticInitd94e368f76baf5151322870cf43a8fab
         'Carbon\\Traits\\Units' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Units.php',
         'Carbon\\Traits\\Week' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Week.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
+        'Clue\\StreamFilter\\CallbackFilter' => __DIR__ . '/..' . '/clue/stream-filter/src/CallbackFilter.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
@@ -742,6 +820,21 @@ class ComposerStaticInitd94e368f76baf5151322870cf43a8fab
         'Dotenv\\Util\\Regex' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Util/Regex.php',
         'Dotenv\\Util\\Str' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Util/Str.php',
         'Dotenv\\Validator' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Validator.php',
+        'Ds\\Collection' => __DIR__ . '/..' . '/php-ds/php-ds/src/Collection.php',
+        'Ds\\Deque' => __DIR__ . '/..' . '/php-ds/php-ds/src/Deque.php',
+        'Ds\\Hashable' => __DIR__ . '/..' . '/php-ds/php-ds/src/Hashable.php',
+        'Ds\\Map' => __DIR__ . '/..' . '/php-ds/php-ds/src/Map.php',
+        'Ds\\Pair' => __DIR__ . '/..' . '/php-ds/php-ds/src/Pair.php',
+        'Ds\\PriorityQueue' => __DIR__ . '/..' . '/php-ds/php-ds/src/PriorityQueue.php',
+        'Ds\\Queue' => __DIR__ . '/..' . '/php-ds/php-ds/src/Queue.php',
+        'Ds\\Sequence' => __DIR__ . '/..' . '/php-ds/php-ds/src/Sequence.php',
+        'Ds\\Set' => __DIR__ . '/..' . '/php-ds/php-ds/src/Set.php',
+        'Ds\\Stack' => __DIR__ . '/..' . '/php-ds/php-ds/src/Stack.php',
+        'Ds\\Traits\\Capacity' => __DIR__ . '/..' . '/php-ds/php-ds/src/Traits/Capacity.php',
+        'Ds\\Traits\\GenericCollection' => __DIR__ . '/..' . '/php-ds/php-ds/src/Traits/GenericCollection.php',
+        'Ds\\Traits\\GenericSequence' => __DIR__ . '/..' . '/php-ds/php-ds/src/Traits/GenericSequence.php',
+        'Ds\\Traits\\SquaredCapacity' => __DIR__ . '/..' . '/php-ds/php-ds/src/Traits/SquaredCapacity.php',
+        'Ds\\Vector' => __DIR__ . '/..' . '/php-ds/php-ds/src/Vector.php',
         'Egulias\\EmailValidator\\EmailLexer' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailLexer.php',
         'Egulias\\EmailValidator\\EmailParser' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailParser.php',
         'Egulias\\EmailValidator\\EmailValidator' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailValidator.php',
@@ -1549,6 +1642,80 @@ class ComposerStaticInitd94e368f76baf5151322870cf43a8fab
         'Hamcrest\\Type\\IsString' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
+        'Http\\Discovery\\ClassDiscovery' => __DIR__ . '/..' . '/php-http/discovery/src/ClassDiscovery.php',
+        'Http\\Discovery\\Exception' => __DIR__ . '/..' . '/php-http/discovery/src/Exception.php',
+        'Http\\Discovery\\Exception\\ClassInstantiationFailedException' => __DIR__ . '/..' . '/php-http/discovery/src/Exception/ClassInstantiationFailedException.php',
+        'Http\\Discovery\\Exception\\DiscoveryFailedException' => __DIR__ . '/..' . '/php-http/discovery/src/Exception/DiscoveryFailedException.php',
+        'Http\\Discovery\\Exception\\NoCandidateFoundException' => __DIR__ . '/..' . '/php-http/discovery/src/Exception/NoCandidateFoundException.php',
+        'Http\\Discovery\\Exception\\NotFoundException' => __DIR__ . '/..' . '/php-http/discovery/src/Exception/NotFoundException.php',
+        'Http\\Discovery\\Exception\\PuliUnavailableException' => __DIR__ . '/..' . '/php-http/discovery/src/Exception/PuliUnavailableException.php',
+        'Http\\Discovery\\Exception\\StrategyUnavailableException' => __DIR__ . '/..' . '/php-http/discovery/src/Exception/StrategyUnavailableException.php',
+        'Http\\Discovery\\HttpAsyncClientDiscovery' => __DIR__ . '/..' . '/php-http/discovery/src/HttpAsyncClientDiscovery.php',
+        'Http\\Discovery\\HttpClientDiscovery' => __DIR__ . '/..' . '/php-http/discovery/src/HttpClientDiscovery.php',
+        'Http\\Discovery\\MessageFactoryDiscovery' => __DIR__ . '/..' . '/php-http/discovery/src/MessageFactoryDiscovery.php',
+        'Http\\Discovery\\NotFoundException' => __DIR__ . '/..' . '/php-http/discovery/src/NotFoundException.php',
+        'Http\\Discovery\\Psr17FactoryDiscovery' => __DIR__ . '/..' . '/php-http/discovery/src/Psr17FactoryDiscovery.php',
+        'Http\\Discovery\\Psr18ClientDiscovery' => __DIR__ . '/..' . '/php-http/discovery/src/Psr18ClientDiscovery.php',
+        'Http\\Discovery\\Strategy\\CommonClassesStrategy' => __DIR__ . '/..' . '/php-http/discovery/src/Strategy/CommonClassesStrategy.php',
+        'Http\\Discovery\\Strategy\\CommonPsr17ClassesStrategy' => __DIR__ . '/..' . '/php-http/discovery/src/Strategy/CommonPsr17ClassesStrategy.php',
+        'Http\\Discovery\\Strategy\\DiscoveryStrategy' => __DIR__ . '/..' . '/php-http/discovery/src/Strategy/DiscoveryStrategy.php',
+        'Http\\Discovery\\Strategy\\MockClientStrategy' => __DIR__ . '/..' . '/php-http/discovery/src/Strategy/MockClientStrategy.php',
+        'Http\\Discovery\\Strategy\\PuliBetaStrategy' => __DIR__ . '/..' . '/php-http/discovery/src/Strategy/PuliBetaStrategy.php',
+        'Http\\Discovery\\StreamFactoryDiscovery' => __DIR__ . '/..' . '/php-http/discovery/src/StreamFactoryDiscovery.php',
+        'Http\\Discovery\\UriFactoryDiscovery' => __DIR__ . '/..' . '/php-http/discovery/src/UriFactoryDiscovery.php',
+        'Http\\Message\\Authentication' => __DIR__ . '/..' . '/php-http/message/src/Authentication.php',
+        'Http\\Message\\Authentication\\AutoBasicAuth' => __DIR__ . '/..' . '/php-http/message/src/Authentication/AutoBasicAuth.php',
+        'Http\\Message\\Authentication\\BasicAuth' => __DIR__ . '/..' . '/php-http/message/src/Authentication/BasicAuth.php',
+        'Http\\Message\\Authentication\\Bearer' => __DIR__ . '/..' . '/php-http/message/src/Authentication/Bearer.php',
+        'Http\\Message\\Authentication\\Chain' => __DIR__ . '/..' . '/php-http/message/src/Authentication/Chain.php',
+        'Http\\Message\\Authentication\\Header' => __DIR__ . '/..' . '/php-http/message/src/Authentication/Header.php',
+        'Http\\Message\\Authentication\\Matching' => __DIR__ . '/..' . '/php-http/message/src/Authentication/Matching.php',
+        'Http\\Message\\Authentication\\QueryParam' => __DIR__ . '/..' . '/php-http/message/src/Authentication/QueryParam.php',
+        'Http\\Message\\Authentication\\RequestConditional' => __DIR__ . '/..' . '/php-http/message/src/Authentication/RequestConditional.php',
+        'Http\\Message\\Authentication\\Wsse' => __DIR__ . '/..' . '/php-http/message/src/Authentication/Wsse.php',
+        'Http\\Message\\Builder\\ResponseBuilder' => __DIR__ . '/..' . '/php-http/message/src/Builder/ResponseBuilder.php',
+        'Http\\Message\\Cookie' => __DIR__ . '/..' . '/php-http/message/src/Cookie.php',
+        'Http\\Message\\CookieJar' => __DIR__ . '/..' . '/php-http/message/src/CookieJar.php',
+        'Http\\Message\\CookieUtil' => __DIR__ . '/..' . '/php-http/message/src/CookieUtil.php',
+        'Http\\Message\\Decorator\\MessageDecorator' => __DIR__ . '/..' . '/php-http/message/src/Decorator/MessageDecorator.php',
+        'Http\\Message\\Decorator\\RequestDecorator' => __DIR__ . '/..' . '/php-http/message/src/Decorator/RequestDecorator.php',
+        'Http\\Message\\Decorator\\ResponseDecorator' => __DIR__ . '/..' . '/php-http/message/src/Decorator/ResponseDecorator.php',
+        'Http\\Message\\Decorator\\StreamDecorator' => __DIR__ . '/..' . '/php-http/message/src/Decorator/StreamDecorator.php',
+        'Http\\Message\\Encoding\\ChunkStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/ChunkStream.php',
+        'Http\\Message\\Encoding\\CompressStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/CompressStream.php',
+        'Http\\Message\\Encoding\\DechunkStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/DechunkStream.php',
+        'Http\\Message\\Encoding\\DecompressStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/DecompressStream.php',
+        'Http\\Message\\Encoding\\DeflateStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/DeflateStream.php',
+        'Http\\Message\\Encoding\\Filter\\Chunk' => __DIR__ . '/..' . '/php-http/message/src/Encoding/Filter/Chunk.php',
+        'Http\\Message\\Encoding\\FilteredStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/FilteredStream.php',
+        'Http\\Message\\Encoding\\GzipDecodeStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/GzipDecodeStream.php',
+        'Http\\Message\\Encoding\\GzipEncodeStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/GzipEncodeStream.php',
+        'Http\\Message\\Encoding\\InflateStream' => __DIR__ . '/..' . '/php-http/message/src/Encoding/InflateStream.php',
+        'Http\\Message\\Exception' => __DIR__ . '/..' . '/php-http/message/src/Exception.php',
+        'Http\\Message\\Exception\\UnexpectedValueException' => __DIR__ . '/..' . '/php-http/message/src/Exception/UnexpectedValueException.php',
+        'Http\\Message\\Formatter' => __DIR__ . '/..' . '/php-http/message/src/Formatter.php',
+        'Http\\Message\\Formatter\\CurlCommandFormatter' => __DIR__ . '/..' . '/php-http/message/src/Formatter/CurlCommandFormatter.php',
+        'Http\\Message\\Formatter\\FullHttpMessageFormatter' => __DIR__ . '/..' . '/php-http/message/src/Formatter/FullHttpMessageFormatter.php',
+        'Http\\Message\\Formatter\\SimpleFormatter' => __DIR__ . '/..' . '/php-http/message/src/Formatter/SimpleFormatter.php',
+        'Http\\Message\\MessageFactory' => __DIR__ . '/..' . '/php-http/message-factory/src/MessageFactory.php',
+        'Http\\Message\\MessageFactory\\DiactorosMessageFactory' => __DIR__ . '/..' . '/php-http/message/src/MessageFactory/DiactorosMessageFactory.php',
+        'Http\\Message\\MessageFactory\\GuzzleMessageFactory' => __DIR__ . '/..' . '/php-http/message/src/MessageFactory/GuzzleMessageFactory.php',
+        'Http\\Message\\MessageFactory\\SlimMessageFactory' => __DIR__ . '/..' . '/php-http/message/src/MessageFactory/SlimMessageFactory.php',
+        'Http\\Message\\RequestFactory' => __DIR__ . '/..' . '/php-http/message-factory/src/RequestFactory.php',
+        'Http\\Message\\RequestMatcher' => __DIR__ . '/..' . '/php-http/message/src/RequestMatcher.php',
+        'Http\\Message\\RequestMatcher\\CallbackRequestMatcher' => __DIR__ . '/..' . '/php-http/message/src/RequestMatcher/CallbackRequestMatcher.php',
+        'Http\\Message\\RequestMatcher\\RegexRequestMatcher' => __DIR__ . '/..' . '/php-http/message/src/RequestMatcher/RegexRequestMatcher.php',
+        'Http\\Message\\RequestMatcher\\RequestMatcher' => __DIR__ . '/..' . '/php-http/message/src/RequestMatcher/RequestMatcher.php',
+        'Http\\Message\\ResponseFactory' => __DIR__ . '/..' . '/php-http/message-factory/src/ResponseFactory.php',
+        'Http\\Message\\StreamFactory' => __DIR__ . '/..' . '/php-http/message-factory/src/StreamFactory.php',
+        'Http\\Message\\StreamFactory\\DiactorosStreamFactory' => __DIR__ . '/..' . '/php-http/message/src/StreamFactory/DiactorosStreamFactory.php',
+        'Http\\Message\\StreamFactory\\GuzzleStreamFactory' => __DIR__ . '/..' . '/php-http/message/src/StreamFactory/GuzzleStreamFactory.php',
+        'Http\\Message\\StreamFactory\\SlimStreamFactory' => __DIR__ . '/..' . '/php-http/message/src/StreamFactory/SlimStreamFactory.php',
+        'Http\\Message\\Stream\\BufferedStream' => __DIR__ . '/..' . '/php-http/message/src/Stream/BufferedStream.php',
+        'Http\\Message\\UriFactory' => __DIR__ . '/..' . '/php-http/message-factory/src/UriFactory.php',
+        'Http\\Message\\UriFactory\\DiactorosUriFactory' => __DIR__ . '/..' . '/php-http/message/src/UriFactory/DiactorosUriFactory.php',
+        'Http\\Message\\UriFactory\\GuzzleUriFactory' => __DIR__ . '/..' . '/php-http/message/src/UriFactory/GuzzleUriFactory.php',
+        'Http\\Message\\UriFactory\\SlimUriFactory' => __DIR__ . '/..' . '/php-http/message/src/UriFactory/SlimUriFactory.php',
         'Illuminate\\Auth\\Access\\AuthorizationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/AuthorizationException.php',
         'Illuminate\\Auth\\Access\\Events\\GateEvaluated' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/Events/GateEvaluated.php',
         'Illuminate\\Auth\\Access\\Gate' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/Gate.php',
@@ -2526,6 +2693,37 @@ class ComposerStaticInitd94e368f76baf5151322870cf43a8fab
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
         'Laravel\\Tinker\\TinkerServiceProvider' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerServiceProvider.php',
+        'Laudis\\Neo4j\\Client' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Client.php',
+        'Laudis\\Neo4j\\ClientBuilder' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/ClientBuilder.php',
+        'Laudis\\Neo4j\\Contracts\\ClientInterface' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Contracts/ClientInterface.php',
+        'Laudis\\Neo4j\\Contracts\\DriverInterface' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Contracts/DriverInterface.php',
+        'Laudis\\Neo4j\\Contracts\\Injections' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Contracts/Injections.php',
+        'Laudis\\Neo4j\\Contracts\\SessionInterface' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Contracts/SessionInterface.php',
+        'Laudis\\Neo4j\\Contracts\\TransactionInterface' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Contracts/TransactionInterface.php',
+        'Laudis\\Neo4j\\Databags\\Neo4jError' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Databags/Neo4jError.php',
+        'Laudis\\Neo4j\\Databags\\RequestData' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Databags/RequestData.php',
+        'Laudis\\Neo4j\\Databags\\Statement' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Databags/Statement.php',
+        'Laudis\\Neo4j\\Databags\\StatementStatistics' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Databags/StatementStatistics.php',
+        'Laudis\\Neo4j\\Enum\\RoutingRoles' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Enum/RoutingRoles.php',
+        'Laudis\\Neo4j\\Exception\\Neo4jException' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Exception/Neo4jException.php',
+        'Laudis\\Neo4j\\Formatter\\BoltCypherFormatter' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Formatter/BoltCypherFormatter.php',
+        'Laudis\\Neo4j\\Formatter\\HttpCypherFormatter' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Formatter/HttpCypherFormatter.php',
+        'Laudis\\Neo4j\\HttpDriver\\RequestFactory' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/HttpDriver/RequestFactory.php',
+        'Laudis\\Neo4j\\HttpDriver\\Transaction' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/HttpDriver/Transaction.php',
+        'Laudis\\Neo4j\\Network\\AutoRoutedSession' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Network/AutoRoutedSession.php',
+        'Laudis\\Neo4j\\Network\\Bolt\\BoltDriver' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Network/Bolt/BoltDriver.php',
+        'Laudis\\Neo4j\\Network\\Bolt\\BoltInjections' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Network/Bolt/BoltInjections.php',
+        'Laudis\\Neo4j\\Network\\Bolt\\BoltSession' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Network/Bolt/BoltSession.php',
+        'Laudis\\Neo4j\\Network\\Http\\HttpDriver' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Network/Http/HttpDriver.php',
+        'Laudis\\Neo4j\\Network\\Http\\HttpInjections' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Network/Http/HttpInjections.php',
+        'Laudis\\Neo4j\\Network\\Http\\HttpSession' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Network/Http/HttpSession.php',
+        'Laudis\\Neo4j\\Network\\RoutingTable' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Network/RoutingTable.php',
+        'Laudis\\Neo4j\\Network\\VersionDiscovery' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/Network/VersionDiscovery.php',
+        'Laudis\\Neo4j\\ParameterHelper' => __DIR__ . '/..' . '/laudis/neo4j-php-client/src/ParameterHelper.php',
+        'Laudis\\TypedEnum\\Errors\\NonExistingEnumerationError' => __DIR__ . '/..' . '/laudis/typed-enum/src/Errors/NonExistingEnumerationError.php',
+        'Laudis\\TypedEnum\\TypedEnum' => __DIR__ . '/..' . '/laudis/typed-enum/src/TypedEnum.php',
+        'Laudis\\TypedEnum\\TypedEnumCollection' => __DIR__ . '/..' . '/laudis/typed-enum/src/TypedEnumCollection.php',
+        'Laudis\\TypedEnum\\TypedEnumCollectionManager' => __DIR__ . '/..' . '/laudis/typed-enum/src/TypedEnumCollectionManager.php',
         'League\\CommonMark\\Block\\Element\\AbstractBlock' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/AbstractBlock.php',
         'League\\CommonMark\\Block\\Element\\AbstractStringContainerBlock' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/AbstractStringContainerBlock.php',
         'League\\CommonMark\\Block\\Element\\BlockQuote' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/BlockQuote.php',
@@ -3794,11 +3992,17 @@ class ComposerStaticInitd94e368f76baf5151322870cf43a8fab
         'Psr\\Http\\Client\\NetworkExceptionInterface' => __DIR__ . '/..' . '/psr/http-client/src/NetworkExceptionInterface.php',
         'Psr\\Http\\Client\\RequestExceptionInterface' => __DIR__ . '/..' . '/psr/http-client/src/RequestExceptionInterface.php',
         'Psr\\Http\\Message\\MessageInterface' => __DIR__ . '/..' . '/psr/http-message/src/MessageInterface.php',
+        'Psr\\Http\\Message\\RequestFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/RequestFactoryInterface.php',
         'Psr\\Http\\Message\\RequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/RequestInterface.php',
+        'Psr\\Http\\Message\\ResponseFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/ResponseFactoryInterface.php',
         'Psr\\Http\\Message\\ResponseInterface' => __DIR__ . '/..' . '/psr/http-message/src/ResponseInterface.php',
+        'Psr\\Http\\Message\\ServerRequestFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/ServerRequestFactoryInterface.php',
         'Psr\\Http\\Message\\ServerRequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/ServerRequestInterface.php',
+        'Psr\\Http\\Message\\StreamFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/StreamFactoryInterface.php',
         'Psr\\Http\\Message\\StreamInterface' => __DIR__ . '/..' . '/psr/http-message/src/StreamInterface.php',
+        'Psr\\Http\\Message\\UploadedFileFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/UploadedFileFactoryInterface.php',
         'Psr\\Http\\Message\\UploadedFileInterface' => __DIR__ . '/..' . '/psr/http-message/src/UploadedFileInterface.php',
+        'Psr\\Http\\Message\\UriFactoryInterface' => __DIR__ . '/..' . '/psr/http-factory/src/UriFactoryInterface.php',
         'Psr\\Http\\Message\\UriInterface' => __DIR__ . '/..' . '/psr/http-message/src/UriInterface.php',
         'Psr\\Log\\AbstractLogger' => __DIR__ . '/..' . '/psr/log/Psr/Log/AbstractLogger.php',
         'Psr\\Log\\InvalidArgumentException' => __DIR__ . '/..' . '/psr/log/Psr/Log/InvalidArgumentException.php',

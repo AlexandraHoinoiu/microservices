@@ -32,7 +32,7 @@ class LoginController extends Controller
                 "password" => "required",
             ];
             $this->model = new LearnerModel();
-        } else if ($this->label == SchoolModel::$LABEL) {
+        } else if ($this->label == 'School') {
             $this->signUpParams = [
                 "name" => "required",
                 "email" => "required|email",

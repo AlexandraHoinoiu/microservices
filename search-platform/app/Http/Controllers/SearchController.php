@@ -17,13 +17,13 @@ class SearchController
             ->build();
     }
 
-    public function search($word = '')
+    public function searchUser($word = '')
     {
         try {
             $users = [];
             if (!empty($word)) {
                 $result = $this->neo4jClient->run("MATCH (n:Learner)
-                where n.firstName =~ '.*$word.*' or n.lastName =~ '.*$word.*'
+                where n.firstName =~ '$word.*' or n.lastName =~ '$word.*'
                 return n, id(n) as id, labels(n) as type
                 union
                 MATCH (n:School)

@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'b85685dc4e21fcc07c8d6a1e79b05e4104f0d2df',
+    'reference' => '1959b843bcdab9195ea3ebe4e6499e95766abe8f',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -28,6 +28,15 @@
       array (
       ),
       'reference' => 'dff976c2f3487d42c1db75a3b180e2b9f0e72ce0',
+    ),
+    'clue/stream-filter' => 
+    array (
+      'pretty_version' => 'v1.5.0',
+      'version' => '1.5.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'aeb7d8ea49c7963d3b581378955dbf5bc49aa320',
     ),
     'cordoval/hamcrest-php' => 
     array (
@@ -445,7 +454,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'b85685dc4e21fcc07c8d6a1e79b05e4104f0d2df',
+      'reference' => '1959b843bcdab9195ea3ebe4e6499e95766abe8f',
     ),
     'laravel/sail' => 
     array (
@@ -464,6 +473,24 @@
       array (
       ),
       'reference' => '04ad32c1a3328081097a181875733fa51f402083',
+    ),
+    'laudis/neo4j-php-client' => 
+    array (
+      'pretty_version' => '1.3.0',
+      'version' => '1.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '674300e6206f778fd762b10558137756031ffbf4',
+    ),
+    'laudis/typed-enum' => 
+    array (
+      'pretty_version' => 'v1.1.1',
+      'version' => '1.1.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3f3ce0d9f4dbcd61d065858cad70c2ab788815dd',
     ),
     'league/commonmark' => 
     array (
@@ -583,6 +610,49 @@
       array (
       ),
       'reference' => 'bae7c545bef187884426f042434e561ab1ddb182',
+    ),
+    'php-ds/php-ds' => 
+    array (
+      'pretty_version' => 'v1.3.0',
+      'version' => '1.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'b98396862fb8a13cbdbbaf4d18be28ee5c01ed3c',
+    ),
+    'php-http/discovery' => 
+    array (
+      'pretty_version' => '1.14.0',
+      'version' => '1.14.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '778f722e29250c1fac0bbdef2c122fa5d038c9eb',
+    ),
+    'php-http/message' => 
+    array (
+      'pretty_version' => '1.11.1',
+      'version' => '1.11.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '887734d9c515ad9a564f6581a682fff87a6253cc',
+    ),
+    'php-http/message-factory' => 
+    array (
+      'pretty_version' => 'v1.0.2',
+      'version' => '1.0.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a478cb11f66a6ac48d8954216cfed9aa06a501a1',
+    ),
+    'php-http/message-factory-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '1.0',
+      ),
     ),
     'phpdocumentor/reflection-common' => 
     array (
@@ -731,6 +801,15 @@
         0 => '1.0',
       ),
     ),
+    'psr/http-factory' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '12ac7fcd07e5b077433f5f2bee95b3a771bf61be',
+    ),
     'psr/http-message' => 
     array (
       'pretty_version' => '1.0.1',
@@ -760,8 +839,8 @@
     array (
       'provided' => 
       array (
-        0 => '1.0',
-        1 => '1.0.0',
+        0 => '1.0.0',
+        1 => '1.0',
       ),
     ),
     'psr/simple-cache' => 
@@ -959,6 +1038,15 @@
       array (
       ),
       'reference' => 'c6c1022351a901512170118436c764e473f6de8c',
+    ),
+    'stefanak-michal/bolt' => 
+    array (
+      'pretty_version' => 'v2.3',
+      'version' => '2.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3aa1ea44338dcff7fcf3c6138a1d143920eb93c3',
     ),
     'swiftmailer/swiftmailer' => 
     array (

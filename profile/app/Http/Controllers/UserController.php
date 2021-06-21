@@ -50,7 +50,7 @@ class UserController extends Controller
         }
     }
 
-    public function getFollowingUsers($type, $userId): JsonResponse
+    public function getFollowingUsers($type, $userId, $limit = ''): JsonResponse
     {
         try {
             $this->getUserType($type);
@@ -63,6 +63,41 @@ class UserController extends Controller
                         ['id' => $node->get('id')],
                         ['type' => $node->get('type')[0]]
                     );
+                }
+                if (!empty($limit) && $limit < count($users)){
+                    $users = array_slice($users, 0, $limit);
+                }
+            }
+            return response()->json([
+                "status" => 200,
+                "success" => true,
+                "users" => $users
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                "status" => "failed",
+                "success" => false,
+                "message" => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getFollowersUsers($type, $userId, $limit = ''): JsonResponse
+    {
+        try {
+            $this->getUserType($type);
+            $users = [];
+            $response = $this->userModel->getFollowersUsers($userId);
+            if ($response->count()) {
+                foreach ($response as $node) {
+                    $users[] = array_merge(
+                        $node->get('user'),
+                        ['id' => $node->get('id')],
+                        ['type' => $node->get('type')[0]]
+                    );
+                }
+                if (!empty($limit) && $limit < count($users)){
+                    $users = array_slice($users, 0, $limit);
                 }
             }
             return response()->json([
