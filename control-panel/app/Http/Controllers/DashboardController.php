@@ -6,8 +6,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Neo4j;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
-class DashboardController
+class DashboardController extends Controller
 {
     private Neo4j $neo4j;
 
@@ -84,18 +85,40 @@ class DashboardController
         }
     }
 
+    public function deleteReport(Request $request): JsonResponse
+    {
+        try {
+            $userType = $request->get('type');
+            $idPost = $request->get('idPost');
+            $idUser = $request->get('idUser');
+            $this->neo4j->neo4jClient->run("MATCH (n:$userType)-[r:REPORT]->(p)
+            where id(p) = $idPost and id(n) = $idUser DELETE r");
+            return response()->json([
+                "status" => 200,
+                "success" => true
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                "status" => "failed",
+                "success" => false,
+                "message" => $e->getMessage()
+            ]);
+        }
+    }
+
     public function getReports(): JsonResponse
     {
         try {
             $result = $this->neo4j->neo4jClient->run(
-                "MATCH (u:Learner)-[r:REPORT]->(p) return id(u) as idU, labels(u) as type, r.type as reportType, id(p) as idP
+                "MATCH (u:Learner)-[r:REPORT]->(p) return id(u) as idU, labels(u) as type, r.type as reportType, id(p) as idP, id(r) as idR
                  union
-                 MATCH (u:School)-[r:REPORT]->(p) return id(u) as idU, labels(u) as type, r.type as reportType, id(p) as idP"
+                 MATCH (u:School)-[r:REPORT]->(p) return id(u) as idU, labels(u) as type, r.type as reportType, id(p) as idP, id(r) as idR"
             );
             $reports = [];
             if ($result->count()) {
                 foreach ($result as $report) {
                     $reports[] = array_merge(
+                        ['id' => $report->get('idR')],
                         ['idUser' => $report->get('idU')],
                         ['type' => $report->get('type')[0]],
                         ['reportType' => $report->get('reportType')],
@@ -107,6 +130,33 @@ class DashboardController
                 "status" => 200,
                 "success" => true,
                 "reports" => $reports
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                "status" => "failed",
+                "success" => false,
+                "message" => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function getSupervisors(): JsonResponse
+    {
+        try {
+            $result = $this->neo4j->neo4jClient->run("match (n:Supervisor) return n, id(n) as id");
+            $supervisors = [];
+            if ($result->count()) {
+                foreach ($result as $supervisor) {
+                    $supervisors[] = array_merge(
+                        $supervisor->get('n'),
+                        ['id' => $supervisor->get('id')],
+                    );
+                }
+            }
+            return response()->json([
+                "status" => 200,
+                "success" => true,
+                "supervisors" => $supervisors
             ]);
         } catch (\Exception $e) {
             return response()->json([
