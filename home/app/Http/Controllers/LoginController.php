@@ -97,6 +97,7 @@ class LoginController extends Controller
     public function signIn(Request $request): JsonResponse
     {
         try {
+            date_default_timezone_set('Europe/Bucharest');
             $validator = Validator::make($request->all(),
                 [
                     "email" => "required|email",
@@ -123,6 +124,13 @@ class LoginController extends Controller
                     ['id' => $results->first()->get('id')]
                 );
                 if (password_verify($password, $data['password'])) {
+                    if (isset($data['disable']) && $data['disable'] > date('Y-m-d H:i:s')) {
+                        return response()->json([
+                            "status" => "failed",
+                            "success" => false,
+                            "message" => "Your account has been deactivated until " . $data['disable']
+                        ]);
+                    }
                     return response()->json([
                         "status" => $this->status_code,
                         "success" => true,
