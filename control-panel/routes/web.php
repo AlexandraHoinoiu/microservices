@@ -11,3 +11,5 @@ Route::get("/supervisors", [DashboardController::class, 'getSupervisors']);
 Route::post("/login", [LoginController::class, 'login']);
 Route::post("/addSupervisor", [LoginController::class, 'addSupervisor']);
 Route::post("/deleteReport", [DashboardController::class, 'deleteReport']);
+Route::post("/deleteUser", [DashboardController::class, 'deleteUser']);
+Route::post("/disableUser", [DashboardController::class, 'disableUser']);

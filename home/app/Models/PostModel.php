@@ -19,8 +19,7 @@ class PostModel extends Neo4jModel
             updatedAt:'$createdAt',
             text:'$text',
             imgPath:'$imgPath',
-            likes:0,
-            dislikes:0
+            likes:0
             }) return ID(post) as id"
         );
         if ($response->count() > 0) {
@@ -79,15 +78,6 @@ class PostModel extends Neo4jModel
         return $this->neo4jClient->run("MATCH (post:$this->label)
             WHERE ID(post) = $postId
             SET post.likes = post.likes + $number
-            RETURN post"
-        );
-    }
-
-    public function modifyDislikes($postId, $number): Vector
-    {
-        return $this->neo4jClient->run("MATCH (post:$this->label)
-            WHERE ID(post) = $postId
-            SET post.dislikes = post.dislikes + $number
             RETURN post"
         );
     }

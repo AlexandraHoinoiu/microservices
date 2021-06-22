@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Neo4j;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -40,7 +41,7 @@ class DashboardController extends Controller
                 "success" => true,
                 "users" => $users
             ]);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json([
                 "status" => "failed",
                 "success" => false,
@@ -76,7 +77,7 @@ class DashboardController extends Controller
                 "success" => true,
                 "posts" => $posts
             ]);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json([
                 "status" => "failed",
                 "success" => false,
@@ -97,7 +98,7 @@ class DashboardController extends Controller
                 "status" => 200,
                 "success" => true
             ]);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json([
                 "status" => "failed",
                 "success" => false,
@@ -131,7 +132,7 @@ class DashboardController extends Controller
                 "success" => true,
                 "reports" => $reports
             ]);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json([
                 "status" => "failed",
                 "success" => false,
@@ -158,7 +159,57 @@ class DashboardController extends Controller
                 "success" => true,
                 "supervisors" => $supervisors
             ]);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
+            return response()->json([
+                "status" => "failed",
+                "success" => false,
+                "message" => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function deleteUser(Request $request)
+    {
+        try {
+            $userType = $request->get('type');
+            $idUser = $request->get('id');
+            $this->neo4j->neo4jClient->run("MATCH (p:Post)-[r:CREATED_BY]->(u:$userType)
+            WHERE ID(u) = $idUser DETACH DELETE p"
+            );
+            $this->neo4j->neo4jClient->run("MATCH (n:$userType) where id(n) = $idUser DETACH DELETE n");
+            return response()->json([
+                "status" => 200,
+                "success" => true
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                "status" => "failed",
+                "success" => false,
+                "message" => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function disableUser(Request $request)
+    {
+        try {
+            date_default_timezone_set('Europe/Bucharest');
+            $userType = $request->get('type');
+            $idUser = $request->get('id');
+            $date = date("Y-m-d H:i:s", strtotime("+1 day"));
+            $result = $this->neo4j->neo4jClient->run("MATCH (user:$userType)
+            WHERE ID(user) = $idUser
+            SET user += {disable: '$date'}
+            RETURN user"
+            );
+            if ($result->count()) {
+                return response()->json([
+                    "status" => 200,
+                    "success" => true
+                ]);
+            }
+            throw new Exception('The user could not be disabled');
+        } catch (Exception $e) {
             return response()->json([
                 "status" => "failed",
                 "success" => false,
