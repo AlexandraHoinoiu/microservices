@@ -74,7 +74,7 @@ class LoginController extends Controller
             $data = [
                 'imgPath' => $awsClient->getFileUrl(config("home.default.$this->label.profileImg")),
                 'coverImg' => $awsClient->getFileUrl(config("home.default.$this->label.coverImg")),
-                'description' => $awsClient->getFileUrl(config("home.default.$this->label.desc"))
+                'description' => config("home.default.$this->label.desc")
             ];
             $this->model->create(array_merge($request->all(), $data));
             $results = $this->model->getDataByEmail($email);
