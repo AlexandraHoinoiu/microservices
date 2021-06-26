@@ -5,9 +5,7 @@ namespace App\Http\Clients;
 
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\BadResponseException;
 use Illuminate\Support\Facades\Log;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class HomeHttpClient
 {
@@ -47,6 +45,111 @@ class HomeHttpClient
                 ['body' => $jsonBody, 'headers' => ['Content-Type' => 'application/json']]
             );
             return json_decode($response->getBody()->getContents(), true);
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+        }
+    }
+
+    public function getFeedPosts($type, $userId, $page)
+    {
+        try {
+            $jsonBody = json_encode([
+                'userId' => $userId,
+                'page' => $page,
+                'type' => $type
+            ]);
+            $response = $this->client->request(
+                'POST',
+                '/posts',
+                ['body' => $jsonBody, 'headers' => ['Content-Type' => 'application/json']]
+            );
+            return json_decode($response->getBody()->getContents(), true);
+
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+            return [
+                "status" => 'failed',
+                "success" => false,
+                "message" => 'API request failed'
+            ];
+        }
+    }
+
+    public function reportPost($type, $userId, $postId, $reportType)
+    {
+        try {
+            $jsonBody = json_encode([
+                'userId' => $userId,
+                'postId' => $postId,
+                'reportType' => $reportType,
+                'type' => $type
+            ]);
+            $response = $this->client->request(
+                'POST',
+                '/reportPost',
+                ['body' => $jsonBody, 'headers' => ['Content-Type' => 'application/json']]
+            );
+            return json_decode($response->getBody()->getContents(), true);
+
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+        }
+    }
+
+    public function editPost($postId, $text)
+    {
+        try {
+            $jsonBody = json_encode([
+                'postId' => $postId,
+                'text' => $text,
+            ]);
+            $response = $this->client->request(
+                'POST',
+                '/editPost',
+                ['body' => $jsonBody, 'headers' => ['Content-Type' => 'application/json']]
+            );
+            return json_decode($response->getBody()->getContents(), true);
+
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+        }
+    }
+
+    public function createPost($type, $userId, $text, $fileName, $dataFile)
+    {
+        try {
+            $jsonBody = json_encode([
+                'userId' => $userId,
+                'fileName' => $fileName,
+                'dataFile' => $dataFile,
+                'type' => $type,
+                'text' => $text,
+            ]);
+            $response = $this->client->request(
+                'POST',
+                '/createPost',
+                ['body' => $jsonBody, 'headers' => ['Content-Type' => 'application/json']]
+            );
+            return json_decode($response->getBody()->getContents(), true);
+
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+        }
+    }
+
+    public function deletePost($postId)
+    {
+        try {
+            $jsonBody = json_encode([
+                'postId' => $postId,
+            ]);
+            $response = $this->client->request(
+                'POST',
+                '/deletePost',
+                ['body' => $jsonBody, 'headers' => ['Content-Type' => 'application/json']]
+            );
+            return json_decode($response->getBody()->getContents(), true);
+
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
         }

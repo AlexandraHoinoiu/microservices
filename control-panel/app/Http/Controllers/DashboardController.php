@@ -4,6 +4,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Clients\AwsClient;
 use App\Models\Neo4j;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -177,6 +178,8 @@ class DashboardController extends Controller
             WHERE ID(u) = $idUser DETACH DELETE p"
             );
             $this->neo4j->neo4jClient->run("MATCH (n:$userType) where id(n) = $idUser DETACH DELETE n");
+            $awsClient = new AwsClient();
+            $awsClient->deleteFolder("users/$userType/$idUser");
             return response()->json([
                 "status" => 200,
                 "success" => true
