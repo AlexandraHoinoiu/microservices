@@ -1,6 +1,6 @@
 <?php
 return [
-    'limitPosts' => 20,
+    'limitPosts' => 10,
     'default' => [
         'Learner' => [
             'profileImg' => "student-default.jpg",
