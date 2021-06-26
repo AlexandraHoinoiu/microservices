@@ -12,7 +12,8 @@ class PostModel extends Neo4jModel
 
     public function create($text, $imgPath): ?int
     {
-        $createdAt = gmdate('Y-m-d H:i:s');
+        date_default_timezone_set('Europe/Bucharest');
+        $createdAt = date('Y-m-d H:i:s');
         $response = $this->neo4jClient->run(
             "CREATE (post:$this->label {
             createdAt:'$createdAt',
@@ -40,9 +41,9 @@ class PostModel extends Neo4jModel
         $skip = $limit * ($page - 1);
         $result = $this->neo4jClient->run("
         match (l:$type),(p:Post)
-        where (l:$type)-[:FOLLOWS]->(:Learner)--(p:Post)
+        where (l:$type)-[:FOLLOWS]->(:Learner)<-[:CREATED_BY]-(p:Post)
         and id(l) = $userId
-        or (l:$type)-[:FOLLOWS]->(:School)--(p:Post)
+        or (l:$type)-[:FOLLOWS]->(:School)<-[:CREATED_BY]-(p:Post)
         and id(l) = $userId
         or (l:$type)<-[:CREATED_BY]-(p:Post)
         and id(l) = $userId

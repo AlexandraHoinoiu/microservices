@@ -17,7 +17,5 @@ Route::post("/deletePost", [PostsController::class, 'deletePost']);
 Route::post("/editPost", [PostsController::class, 'editPost']);
 Route::post("/reportPost", [PostsController::class, 'reportPost']);
 Route::get("/like/{postId}", [PostsController::class, 'likePost']);
-Route::get("/dislike/{postId}", [PostsController::class, 'dislikePost']);
-Route::get("/remove-dislike/{postId}", [PostsController::class, 'removeDislikePost']);
 /** END POSTS ROUTES */
 

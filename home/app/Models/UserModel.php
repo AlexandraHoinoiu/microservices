@@ -30,7 +30,7 @@ class UserModel extends Neo4jModel
     {
         return $this->neo4jClient->run("MATCH (user:$this->label), (post:Post)
         WHERE id(user) = $userId and id(post) = $postId
-        CREATE (user)-[r:REPORT {type:'$reportType'}]->(p)
+        CREATE (user)-[r:REPORT {type:'$reportType'}]->(post)
         RETURN r"
         );
     }
