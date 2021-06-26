@@ -44,38 +44,6 @@ class AwsClient
         ]);
     }
 
-    public function getFiles($folder = '')
-    {
-        try {
-            $this->client->registerStreamWrapper();
-            $object = $this->client->listObjects([
-                'Bucket' => $this->bucket,
-                'Prefix' => $folder
-            ]);
-            return $object['Contents'] ?? [];
-        } catch (Exception $e) {
-            return [];
-        }
-    }
-
-    public function downloadFile($key)
-    {
-        $object = $this->getFileObject($key);
-        $fileName = explode('/', $key);
-        $fileName = $fileName[count($fileName) - 1];
-
-        header('Content-Description: File Transfer');
-        //this assumes content type is set when uploading the file.
-        header('Content-Type: ' . $object['ContentType']);
-        header('Content-Disposition: attachment; filename=' . $fileName);
-        header('Expires: 0');
-        header('Cache-Control: must-revalidate');
-        header('Pragma: public');
-
-        //send file to browser for download.
-        echo $object['Body'];
-    }
-
     public function fileExist($filename): bool
     {
         return $this->client->doesObjectExist($this->bucket, $filename);
@@ -89,27 +57,6 @@ class AwsClient
         ]);
     }
 
-    public function getUploadData($key)
-    {
-        $result = $this->getFileObject($key);
-        return $result['LastModified'];
-    }
-
-    public function getFileContent($key)
-    {
-        $object = $this->getFileObject($key);
-        if (is_object($object['Body'])) {
-            return $object['Body']->getContents();
-        }
-    }
-
-    protected function getFileObject($key): Result
-    {
-        return $this->client->getObject([
-            'Bucket' => $this->bucket,
-            'Key' => $key
-        ]);
-    }
 
     public function getFileUrl($key): ?string
     {

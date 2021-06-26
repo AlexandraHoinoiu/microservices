@@ -135,9 +135,9 @@ class UserController extends Controller
                 $imgUrl = $this->awsClient->getFileUrl($awsKey);
                 unlink(storage_path() . '/' . $fileName);
                 if ($photoType == self::COVER_PHOTO) {
-                    $response = $this->userModel->changeCoverPhoto($userId, $imgUrl);
+                    $response = $this->userModel->changeCoverPhoto($userId, $imgUrl, $this->awsClient);
                 } else {
-                    $response = $this->userModel->changeProfilePhoto($userId, $imgUrl);
+                    $response = $this->userModel->changeProfilePhoto($userId, $imgUrl, $this->awsClient);
                 }
                 if ($response->count()) {
                     return response()->json([

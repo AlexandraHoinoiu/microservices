@@ -4,6 +4,7 @@
 namespace App\Models;
 
 
+use App\Clients\AwsClient;
 use Ds\Vector;
 
 class PostModel extends Neo4jModel
@@ -29,8 +30,13 @@ class PostModel extends Neo4jModel
         return null;
     }
 
-    public function delete($id): Vector
+    public function delete($id, AwsClient $awsClient): Vector
     {
+        $result = $this->neo4jClient->run("MATCH (post:$this->label)
+        WHERE ID(post) = $id
+        return post.imgPath as filename"
+        );
+        $awsClient->deleteFile(substr($result->first()->get('filename'), 53));
         return $this->neo4jClient->run("MATCH (post:$this->label) WHERE ID(post) = $id DETACH DELETE post");
     }
 

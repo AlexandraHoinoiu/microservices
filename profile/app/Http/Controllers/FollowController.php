@@ -31,7 +31,7 @@ class FollowController
         $followedType = $request->get('followedType');
         $result = $this->neo4jClient->run("MATCH (follower:$followerType {email: '$followerEmail'}),
         (followed:$followedType {email: '$followedEmail'})
-        RETURN EXISTS((follower)-[:FOLLOWS]-(followed)) as result");
+        RETURN EXISTS((follower)-[:FOLLOWS]->(followed)) as result");
         if ($result->count() <= 0) {
             return response()->json([
                 "status" => 'failed',
@@ -64,7 +64,7 @@ class FollowController
         $followedType = $request->get('followedType');
         $result = $this->neo4jClient->run("MATCH (follower:$followerType {email: '$followerEmail'}),
         (followed:$followedType {email: '$followedEmail'})
-        RETURN EXISTS((follower)-[:FOLLOWS]-(followed)) as result");
+        RETURN EXISTS((follower)-[:FOLLOWS]->(followed)) as result");
         if ($result->count() <= 0) {
             return response()->json([
                 "status" => 'failed',

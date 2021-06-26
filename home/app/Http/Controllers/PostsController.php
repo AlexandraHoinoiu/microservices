@@ -89,8 +89,10 @@ class PostsController
                 $new_data = explode(";", $dataFile);
                 $data = explode(",", $new_data[1]);
                 file_put_contents(storage_path() . '/' . $fileName, base64_decode($data[1]));
-                $this->awsClient->uploadFile(storage_path() . '/' . $fileName, 'users/' . $userId . '/posts/' . $fileName);
-                $imgUrl = $this->awsClient->getFileUrl('users/' . $userId . '/posts/' . $fileName);
+                $time = time();
+                $awsPath = 'users/' . $this->type . '/' . $userId . '/posts/' . $time . '-' . $fileName;
+                $this->awsClient->uploadFile(storage_path() . '/' . $fileName, $awsPath);
+                $imgUrl = $this->awsClient->getFileUrl($awsPath);
                 unlink(storage_path() . '/' . $fileName);
             }
             $postId = $this->postModel->create($text, $imgUrl);
@@ -103,7 +105,7 @@ class PostsController
                         "message" => 'The post has been created.'
                     ]);
                 }
-                $this->postModel->delete($postId);
+                $this->postModel->delete($postId, $this->awsClient);
             }
             return response()->json([
                 "status" => 'failed',
@@ -123,7 +125,7 @@ class PostsController
     {
         $postId = $request->get('postId');
         try {
-            $this->postModel->delete($postId);
+            $this->postModel->delete($postId, $this->awsClient);
             return response()->json([
                 "status" => 200,
                 "success" => true,

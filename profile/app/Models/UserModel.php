@@ -4,6 +4,7 @@
 namespace App\Models;
 
 
+use App\Clients\AwsClient;
 use Ds\Vector;
 
 class UserModel extends Neo4jModel
@@ -18,8 +19,16 @@ class UserModel extends Neo4jModel
         );
     }
 
-    public function changeProfilePhoto($userId, $imgPath): Vector
+    public function changeProfilePhoto($userId, $imgPath, AwsClient $awsClient): Vector
     {
+        $result = $this->neo4jClient->run("MATCH (user:$this->label)
+        WHERE ID(user) = $userId
+        return user.profileImg as filename"
+        );
+        $filePath = substr($result->first()->get('filename'), 53);
+        if ($filePath != 'student-default.jpg' && $filePath != 'university.jpg') {
+            $awsClient->deleteFile($filePath);
+        }
         return $this->neo4jClient->run("MATCH (user:$this->label)
             WHERE ID(user) = $userId
             SET user.profileImg = '$imgPath'
@@ -27,8 +36,16 @@ class UserModel extends Neo4jModel
         );
     }
 
-    public function changeCoverPhoto($userId, $imgPath): Vector
+    public function changeCoverPhoto($userId, $imgPath, AwsClient $awsClient): Vector
     {
+        $result = $this->neo4jClient->run("MATCH (user:$this->label)
+        WHERE ID(user) = $userId
+        return user.coverImg as filename"
+        );
+        $filePath = substr($result->first()->get('filename'), 53);
+        if ($filePath != 'cover-learner.jpg' && $filePath != 'cover-university.jpg') {
+            $awsClient->deleteFile($filePath);
+        }
         return $this->neo4jClient->run("MATCH (user:$this->label)
             WHERE ID(user) = $userId
             SET user.coverImg = '$imgPath'
