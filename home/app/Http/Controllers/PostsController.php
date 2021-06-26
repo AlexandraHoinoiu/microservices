@@ -31,27 +31,16 @@ class PostsController
     {
         try {
             $this->getType($request);
-            $limit = config('home.limitPosts');
             $userId = $request->get('userId');
             $page = $request->get('page', 1);
-            if ($page <= 0) {
+            if ($page <= 0 || !is_numeric($page)) {
                 $page = 1;
             }
-            $posts = $this->postModel->getFeedPosts($userId, $this->type);
-            if (!empty($posts)) {
-                usort($posts, function ($a, $b) {
-                    return $b['createdAt'] <=> $a['createdAt'];
-                });
-            }
-            $posts = array_chunk($posts, $limit);
-            $data = [];
-            if (isset($posts[$page - 1])) {
-                $data = $posts[$page - 1];
-            }
+            $posts = $this->postModel->getFeedPosts($userId, $this->type, $page);
             return response()->json([
                 "status" => 200,
                 "success" => true,
-                "data" => $data
+                "data" => $posts
             ]);
         } catch (Exception $e) {
             return response()->json([
@@ -172,23 +161,6 @@ class PostsController
     public function likePost($postId): JsonResponse
     {
         $response = $this->postModel->modifyLikes($postId, 1);
-        if ($response->count() > 0 && $response->first()->get('post')) {
-            return response()->json([
-                "status" => 200,
-                "success" => true,
-                "message" => 'OK'
-            ]);
-        }
-        return response()->json([
-            "status" => 'failed',
-            "success" => false,
-            "message" => 'Error'
-        ]);
-    }
-
-    public function removeLikePost($postId): JsonResponse
-    {
-        $response = $this->postModel->modifyLikes($postId, -1);
         if ($response->count() > 0 && $response->first()->get('post')) {
             return response()->json([
                 "status" => 200,

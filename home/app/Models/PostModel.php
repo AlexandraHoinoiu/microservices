@@ -33,28 +33,21 @@ class PostModel extends Neo4jModel
         return $this->neo4jClient->run("MATCH (post:$this->label) WHERE ID(post) = $id DETACH DELETE post");
     }
 
-    public function getFeedPosts($userId, $type): array
+    public function getFeedPosts($userId, $type, $page): array
     {
         $posts = [];
-        $result = $this->neo4jClient->run("MATCH (n:$type)-[:FOLLOWS]->(:Learner)--(p:$this->label)
-            where id(n) = $userId RETURN p, id(p) as id");
-        if ($result->count()) {
-            foreach ($result as $post) {
-                $posts[] = array_merge($post->get('p'), ['id' => $post->get('id')]);
-            }
-        }
-        $result = $this->neo4jClient->run("MATCH (n:$type)-[:FOLLOWS]->(:School)--(p:$this->label)
-            where id(n) = $userId
-            RETURN p , id(p) as id"
-        );
-        if ($result->count()) {
-            foreach ($result as $post) {
-                $posts[] = array_merge($post->get('p'), ['id' => $post->get('id')]);
-            }
-        }
-        $result = $this->neo4jClient->run("MATCH (n:$type)<-[:CREATED_BY]-(p:$this->label)
-            where id(n) = $userId
-            RETURN p, id(p) as id"
+        $limit = config('home.limitPosts');
+        $skip = $limit * ($page - 1);
+        $result = $this->neo4jClient->run("
+        match (l:$type),(p:Post)
+        where (l:$type)-[:FOLLOWS]->(:Learner)--(p:Post)
+        or (l:$type)-[:FOLLOWS]->(:School)--(p:Post)
+        or (l:$type)<-[:CREATED_BY]-(p:Post)
+        and id(l) = $userId
+        return DISTINCT p, id(p) as id
+        order by p.createdAt DESC
+        skip $skip
+        limit $limit"
         );
         if ($result->count()) {
             foreach ($result as $post) {
