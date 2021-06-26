@@ -41,7 +41,9 @@ class PostModel extends Neo4jModel
         $result = $this->neo4jClient->run("
         match (l:$type),(p:Post)
         where (l:$type)-[:FOLLOWS]->(:Learner)--(p:Post)
+        and id(l) = $userId
         or (l:$type)-[:FOLLOWS]->(:School)--(p:Post)
+        and id(l) = $userId
         or (l:$type)<-[:CREATED_BY]-(p:Post)
         and id(l) = $userId
         return DISTINCT p, id(p) as id
