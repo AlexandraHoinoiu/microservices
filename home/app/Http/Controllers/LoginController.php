@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 
 use App\Clients\AwsClient;
 use App\Models\LearnerModel;
-use App\Models\Neo4jModel;
 use App\Models\SchoolModel;
+use App\Models\UserModel;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Validator;
 class LoginController extends Controller
 {
     private int $status_code = 200;
-    private Neo4jModel $model;
+    private UserModel $model;
     private array $signUpParams = [];
     private string $label;
 

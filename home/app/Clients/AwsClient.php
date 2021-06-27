@@ -7,7 +7,6 @@ namespace App\Clients;
 use Aws\Credentials\Credentials;
 use Aws\Result;
 use Aws\S3\S3Client;
-use Exception;
 
 class AwsClient
 {

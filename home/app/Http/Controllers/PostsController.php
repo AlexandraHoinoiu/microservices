@@ -9,6 +9,7 @@ use App\Models\LearnerModel;
 use App\Models\Neo4jModel;
 use App\Models\PostModel;
 use App\Models\SchoolModel;
+use App\Models\UserModel;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Log;
 class PostsController
 {
     private PostModel $postModel;
-    private Neo4jModel $userModel;
+    private UserModel $userModel;
     private string $type;
     private AwsClient $awsClient;
 
