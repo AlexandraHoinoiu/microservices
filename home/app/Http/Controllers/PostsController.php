@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 
 use App\Clients\AwsClient;
 use App\Models\LearnerModel;
-use App\Models\Neo4jModel;
 use App\Models\PostModel;
 use App\Models\SchoolModel;
 use App\Models\UserModel;
@@ -46,31 +45,6 @@ class PostsController
         } catch (Exception $e) {
             return response()->json([
                 "status" => "failed",
-                "success" => false,
-                "message" => $e->getMessage()
-            ]);
-        }
-    }
-
-    public function reportPost(Request $request): JsonResponse
-    {
-        try {
-            $this->getType($request);
-            $userId = $request->get('userId');
-            $postId = $request->get('postId');
-            $reportType = $request->get('reportType');
-            $result = $this->userModel->reportPost($userId, $postId, $reportType);
-            if ($result->count() > 0) {
-                return response()->json([
-                    "status" => 200,
-                    "success" => true,
-                    "message" => 'The post was reported.'
-                ]);
-            }
-            throw new Exception('Something went wrong!');
-        } catch (Exception $e) {
-            return response()->json([
-                "status" => 'failed',
                 "success" => false,
                 "message" => $e->getMessage()
             ]);
@@ -176,6 +150,31 @@ class PostsController
             "success" => false,
             "message" => 'Error'
         ]);
+    }
+
+    public function reportPost(Request $request): JsonResponse
+    {
+        try {
+            $this->getType($request);
+            $userId = $request->get('userId');
+            $postId = $request->get('postId');
+            $reportType = $request->get('reportType');
+            $result = $this->userModel->reportPost($userId, $postId, $reportType);
+            if ($result->count() > 0) {
+                return response()->json([
+                    "status" => 200,
+                    "success" => true,
+                    "message" => 'The post was reported.'
+                ]);
+            }
+            throw new Exception('Something went wrong!');
+        } catch (Exception $e) {
+            return response()->json([
+                "status" => 'failed',
+                "success" => false,
+                "message" => $e->getMessage()
+            ]);
+        }
     }
 
     public function getUserPost($postId): JsonResponse

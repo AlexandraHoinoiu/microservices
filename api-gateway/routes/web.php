@@ -26,3 +26,15 @@ Route::post("/home/editPost", [APIController::class, 'editPost']);
 Route::post("/home/reportPost", [APIController::class, 'reportPost']);
 Route::get("/home/post/user/{postId}", [APIController::class, 'getUserPosts']);
 Route::get("/home/like/{postId}", [APIController::class, 'likePost']);
+
+
+Route::post("/profile/follow", [APIController::class, 'followUser']);
+Route::post("/profile/unfollow", [APIController::class, 'unfollowUser']);
+Route::post("/profile/posts", [APIController::class, 'getProfilePosts']);
+Route::post("/profile/checkUserFollow", [APIController::class, 'checkUserFollow']);
+Route::post("/profile/user/changePhoto", [APIController::class, 'changePhoto']);
+Route::post("/profile/user/editInfo", [APIController::class, 'editInfo']);
+Route::get("/profile/suggested-users/{type}/{email}/{limit?}", [APIController::class, 'suggestedUsers']);
+Route::get("/profile/user-followers/{type}/{userId}/{limit?}", [APIController::class, 'getFollowersUsers']);
+Route::get("/profile/user-following/{type}/{userId}/{limit?}", [APIController::class, 'getFollowingUsers']);
+Route::get("/profile/user/{type}/{userId}", [APIController::class, 'getUserDetails']);

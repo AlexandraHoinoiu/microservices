@@ -94,4 +94,78 @@ class APIController extends Controller
 
     }
 
+    public function getProfilePosts(Request $request)
+    {
+        $type = $request->get('type');
+        $userId = $request->get('userId');
+        $page = $request->get('page', 1);
+        $response = $this->profileClient->getPosts($type, $userId, $page);
+        return response()->json($response);
+    }
+
+    public function followUser(Request $request)
+    {
+        $followerEmail = $request->get('followerEmail');
+        $followedEmail = $request->get('followedEmail');
+        $followerType = $request->get('followerType');
+        $followedType = $request->get('followedType');
+        $response = $this->profileClient->follow($followerEmail, $followedEmail, $followedType, $followerType);
+        return response()->json($response);
+    }
+
+    public function unfollowUser(Request $request)
+    {
+        $followerEmail = $request->get('followerEmail');
+        $followedEmail = $request->get('followedEmail');
+        $followerType = $request->get('followerType');
+        $followedType = $request->get('followedType');
+        $response = $this->profileClient->unfollow($followerEmail, $followedEmail, $followedType, $followerType);
+        return response()->json($response);
+    }
+
+    public function checkUserFollow(Request $request)
+    {
+        $followerEmail = $request->get('followerEmail');
+        $followedEmail = $request->get('followedEmail');
+        $followerType = $request->get('followerType');
+        $followedType = $request->get('followedType');
+        $response = $this->profileClient->checkUserFollow($followerEmail, $followedEmail, $followedType, $followerType);
+        return response()->json($response);
+    }
+
+    public function changePhoto(Request $request)
+    {
+        $userId = $request->get('userId');
+        $type = $request->get('type', '');
+        $fileName = $request->get('fileName', '');
+        $dataFile = $request->get('dataFile', '');
+        $photoType = $request->get('photoType', '');
+        $response = $this->profileClient->changePhoto($userId, $type, $fileName, $dataFile, $photoType);
+        return response()->json($response);
+    }
+
+    public function editInfo(Request $request)
+    {
+
+    }
+
+    public function getUserDetails()
+    {
+
+    }
+
+    public function getFollowingUsers()
+    {
+
+    }
+
+    public function getFollowersUsers()
+    {
+
+    }
+
+    public function suggestedUsers()
+    {
+
+    }
 }

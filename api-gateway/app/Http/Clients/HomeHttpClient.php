@@ -32,6 +32,11 @@ class HomeHttpClient
             return json_decode($response->getBody()->getContents(), true);
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
+            return [
+                "status" => 'failed',
+                "success" => false,
+                "message" => 'API request failed'
+            ];
         }
     }
 
@@ -47,6 +52,11 @@ class HomeHttpClient
             return json_decode($response->getBody()->getContents(), true);
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
+            return [
+                "status" => 'failed',
+                "success" => false,
+                "message" => 'API request failed'
+            ];
         }
     }
 
@@ -93,6 +103,11 @@ class HomeHttpClient
 
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
+            return [
+                "status" => 'failed',
+                "success" => false,
+                "message" => 'API request failed'
+            ];
         }
     }
 
@@ -112,6 +127,11 @@ class HomeHttpClient
 
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
+            return [
+                "status" => 'failed',
+                "success" => false,
+                "message" => 'API request failed'
+            ];
         }
     }
 
@@ -134,6 +154,11 @@ class HomeHttpClient
 
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
+            return [
+                "status" => 'failed',
+                "success" => false,
+                "message" => 'API request failed'
+            ];
         }
     }
 
@@ -152,6 +177,11 @@ class HomeHttpClient
 
         } catch (\Exception $exception) {
             Log::error($exception->getMessage());
+            return [
+                "status" => 'failed',
+                "success" => false,
+                "message" => 'API request failed'
+            ];
         }
     }
 }
