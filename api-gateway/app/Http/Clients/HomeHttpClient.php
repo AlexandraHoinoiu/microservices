@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Log;
 
 class HomeHttpClient
 {
-    private $client;
+    private Client $client;
 
     public function __construct()
     {
@@ -172,6 +172,46 @@ class HomeHttpClient
                 'POST',
                 '/deletePost',
                 ['body' => $jsonBody, 'headers' => ['Content-Type' => 'application/json']]
+            );
+            return json_decode($response->getBody()->getContents(), true);
+
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+            return [
+                "status" => 'failed',
+                "success" => false,
+                "message" => 'API request failed'
+            ];
+        }
+    }
+
+    public function getUserPost($postId)
+    {
+        try {
+            $response = $this->client->request(
+                'GET',
+                sprintf('/post/user/%s', $postId),
+                ['headers' => ['Content-Type' => 'application/json']]
+            );
+            return json_decode($response->getBody()->getContents(), true);
+
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+            return [
+                "status" => 'failed',
+                "success" => false,
+                "message" => 'API request failed'
+            ];
+        }
+    }
+
+    public function likePost($postId)
+    {
+        try {
+            $response = $this->client->request(
+                'GET',
+                sprintf('/like/%s', $postId),
+                ['headers' => ['Content-Type' => 'application/json']]
             );
             return json_decode($response->getBody()->getContents(), true);
 

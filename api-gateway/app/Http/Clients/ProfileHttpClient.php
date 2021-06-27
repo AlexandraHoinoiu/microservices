@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Log;
 
 class ProfileHttpClient
 {
-    private $client;
+    private Client $client;
 
     public function __construct()
     {
@@ -134,6 +134,87 @@ class ProfileHttpClient
                 'POST',
                 '/user/changePhoto',
                 ['body' => $jsonBody, 'headers' => ['Content-Type' => 'application/json']]
+            );
+            return json_decode($response->getBody()->getContents(), true);
+
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+            return [
+                "status" => 'failed',
+                "success" => false,
+                "message" => 'API request failed'
+            ];
+        }
+    }
+
+    public function getUserDetails($type, $userId)
+    {
+        try {
+
+            $response = $this->client->request(
+                'GET',
+                sprintf('/user/%s/%s', $type, $userId),
+                ['headers' => ['Content-Type' => 'application/json']]
+            );
+            return json_decode($response->getBody()->getContents(), true);
+
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+            return [
+                "status" => 'failed',
+                "success" => false,
+                "message" => 'API request failed'
+            ];
+        }
+    }
+
+    public function getFollowingUsers($type, $userId, $limit = '')
+    {
+        try {
+            $response = $this->client->request(
+                'GET',
+                sprintf('/user-following/%s/%s/%s', $type, $userId, $limit),
+                ['headers' => ['Content-Type' => 'application/json']]
+            );
+            return json_decode($response->getBody()->getContents(), true);
+
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+            return [
+                "status" => 'failed',
+                "success" => false,
+                "message" => 'API request failed'
+            ];
+        }
+    }
+
+    public function getFollowersUsers($type, $userId, $limit = '')
+    {
+        try {
+            $response = $this->client->request(
+                'GET',
+                sprintf('/user-followers/%s/%s/%s', $type, $userId, $limit),
+                ['headers' => ['Content-Type' => 'application/json']]
+            );
+            return json_decode($response->getBody()->getContents(), true);
+
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+            return [
+                "status" => 'failed',
+                "success" => false,
+                "message" => 'API request failed'
+            ];
+        }
+    }
+
+    public function suggestedUsers($type, $email, $limit = '')
+    {
+        try {
+            $response = $this->client->request(
+                'GET',
+                sprintf('/suggested-users/%s/%s/%s', $type, $email, $limit),
+                ['headers' => ['Content-Type' => 'application/json']]
             );
             return json_decode($response->getBody()->getContents(), true);
 

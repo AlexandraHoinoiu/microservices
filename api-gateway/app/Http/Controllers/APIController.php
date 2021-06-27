@@ -48,9 +48,10 @@ class APIController extends Controller
         return response()->json($this->homeClient->getFeedPosts($type, $userId, $page));
     }
 
-    public function getUserPosts(Request $request)
+    public function getUserPosts($postId)
     {
-
+        $response = $this->homeClient->getUserPost($postId);
+        return response()->json($response);
     }
 
     public function createPosts(Request $request)
@@ -89,9 +90,10 @@ class APIController extends Controller
         return response()->json($response);
     }
 
-    public function likePost(Request $request)
+    public function likePost($postId)
     {
-
+        $response = $this->homeClient->likePost($postId);
+        return response()->json($response);
     }
 
     public function getProfilePosts(Request $request)
@@ -149,23 +151,99 @@ class APIController extends Controller
 
     }
 
-    public function getUserDetails()
+    public function getUserDetails($type, $userId)
     {
-
+        $response = $this->profileClient->getUserDetails($type, $userId);
+        return response()->json($response);
     }
 
-    public function getFollowingUsers()
+    public function getFollowingUsers($type, $userId, $limit = '')
     {
-
+        $response = $this->profileClient->getFollowingUsers($type, $userId, $limit);
+        return response()->json($response);
     }
 
-    public function getFollowersUsers()
+    public function getFollowersUsers($type, $userId, $limit = '')
     {
-
+        $response = $this->profileClient->getFollowersUsers($type, $userId, $limit);
+        return response()->json($response);
     }
 
-    public function suggestedUsers()
+    public function suggestedUsers($type, $email, $limit = '')
     {
+        $response = $this->profileClient->getFollowersUsers($type, $email, $limit);
+        return response()->json($response);
+    }
 
+    public function searchWord($word = '')
+    {
+        $response = $this->searchClient->searchWord($word);
+        return response()->json($response);
+    }
+
+    public function disableUser(Request $request)
+    {
+        $userType = $request->get('type');
+        $idUser = $request->get('idUser');
+        $response = $this->controlPanelClient->disableUser($userType, $idUser);
+        return response()->json($response);
+    }
+
+    public function deleteUser(Request $request)
+    {
+        $userType = $request->get('type');
+        $idUser = $request->get('idUser');
+        $response = $this->controlPanelClient->deleteUser($userType, $idUser);
+        return response()->json($response);
+    }
+
+    public function deleteReport(Request $request)
+    {
+        $userType = $request->get('type');
+        $idPost = $request->get('idPost');
+        $idUser = $request->get('idUser');
+        $response = $this->controlPanelClient->deleteReport($userType, $idUser, $idPost);
+        return response()->json($response);
+    }
+
+    public function addSupervisor(Request $request)
+    {
+        $email = $request->get('email');
+        $password = $request->get('password');
+        $type = $request->get('type');
+        $response = $this->controlPanelClient->addSupervisor($email, $password, $type);
+        return response()->json($response);
+    }
+
+    public function login(Request $request)
+    {
+        $email = $request->get('email');
+        $password = $request->get('password');
+        $response = $this->controlPanelClient->login($email, $password);
+        return response()->json($response);
+    }
+
+    public function getSupervisors()
+    {
+        $response = $this->controlPanelClient->getSupervisors();
+        return response()->json($response);
+    }
+
+    public function getReports()
+    {
+        $response = $this->controlPanelClient->getReports();
+        return response()->json($response);
+    }
+
+    public function getUsers()
+    {
+        $response = $this->controlPanelClient->getUsers();
+        return response()->json($response);
+    }
+
+    public function getPosts()
+    {
+        $response = $this->controlPanelClient->getPosts();
+        return response()->json($response);
     }
 }
