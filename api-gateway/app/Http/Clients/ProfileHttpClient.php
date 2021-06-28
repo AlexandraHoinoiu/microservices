@@ -227,4 +227,24 @@ class ProfileHttpClient
             ];
         }
     }
+
+    public function editInfo($request)
+    {
+        try {
+            $response = $this->client->request(
+                'POST',
+                '/user/editInfo',
+                ['body' => json_encode($request), 'headers' => ['Content-Type' => 'application/json']]
+            );
+            return json_decode($response->getBody()->getContents(), true);
+
+        } catch (\Exception $exception) {
+            Log::error($exception->getMessage());
+            return [
+                "status" => 'failed',
+                "success" => false,
+                "message" => 'API request failed'
+            ];
+        }
+    }
 }

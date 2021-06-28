@@ -13,7 +13,6 @@ Route::post("/home/reportPost", [APIController::class, 'reportPost']);
 Route::get("/home/post/user/{postId}", [APIController::class, 'getUserPosts']);
 Route::get("/home/like/{postId}", [APIController::class, 'likePost']);
 
-
 Route::post("/profile/follow", [APIController::class, 'followUser']);
 Route::post("/profile/unfollow", [APIController::class, 'unfollowUser']);
 Route::post("/profile/posts", [APIController::class, 'getProfilePosts']);

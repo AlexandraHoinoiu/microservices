@@ -112,9 +112,11 @@ class DashboardController extends Controller
     {
         try {
             $result = $this->neo4j->neo4jClient->run(
-                "MATCH (u:Learner)-[r:REPORT]->(p) return id(u) as idU, labels(u) as type, r.type as reportType, id(p) as idP, id(r) as idR
+                "MATCH (u:Learner)-[r:REPORT]->(p)
+                return id(u) as idU, labels(u) as type, r.type as reportType, id(p) as idP, id(r) as idR
                  union
-                 MATCH (u:School)-[r:REPORT]->(p) return id(u) as idU, labels(u) as type, r.type as reportType, id(p) as idP, id(r) as idR"
+                 MATCH (u:School)-[r:REPORT]->(p)
+                 return id(u) as idU, labels(u) as type, r.type as reportType, id(p) as idP, id(r) as idR"
             );
             $reports = [];
             if ($result->count()) {

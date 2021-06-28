@@ -12,11 +12,13 @@ services:
       - 9900:80
     volumes:
       - ./api-gateway:/var/www
-    extra_hosts:
-      - "home.local:172.19.0.7"
-      - "profile.local:172.19.0.7"
-      - "search.local:172.19.0.7"
-      - "controlpanel.local:172.19.0.7"
+    networks:
+      - microservices
+#    extra_hosts:
+#      - "home.local:172.19.0.7"
+#      - "profile.local:172.19.0.7"
+#      - "search.local:172.19.0.7"
+#      - "controlpanel.local:172.19.0.7"
 
   home:
     container_name: home-service
@@ -28,6 +30,8 @@ services:
       - 9901:80
     volumes:
       - ./home:/var/www
+    networks:
+      - microservices
 
   profile:
     container_name: profile-service
@@ -39,6 +43,8 @@ services:
       - 9902:80
     volumes:
       - ./profile:/var/www
+    networks:
+      - microservices
 
 
   controlpanel:
@@ -51,6 +57,8 @@ services:
       - 9903:80
     volumes:
       - ./control-panel:/var/www
+    networks:
+      - microservices
 
   search:
     container_name: search-platform-service
@@ -62,6 +70,8 @@ services:
       - 9904:80
     volumes:
       - ./search-platform:/var/www
+    networks:
+      - microservices
 
   neo4j:
     image: neo4j:latest
@@ -77,14 +87,20 @@ services:
     volumes:
       - neo4j:/data
       - ./docker/neo4j:/opt/project
+    networks:
+      - microservices
 
   redis:
     container_name: redis
     image: redis:latest
+    ports:
+      - "6382:6379"
+    networks:
+      - microservices
 
 volumes:
   neo4j:
 
 networks:
-  default:
-    name: microservices
+  microservices:
+    driver: "bridge"

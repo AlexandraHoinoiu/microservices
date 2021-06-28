@@ -95,7 +95,7 @@ class ControlPanelHttpClient
         try {
             $jsonBody = json_encode([
                 'type' => $userType,
-                'idUser' => $userId,
+                'id' => $userId,
             ]);
             $response = $this->client->request(
                 'POST',
@@ -119,7 +119,7 @@ class ControlPanelHttpClient
         try {
             $jsonBody = json_encode([
                 'type' => $userType,
-                'idUser' => $userId,
+                'id' => $userId,
             ]);
             $response = $this->client->request(
                 'POST',
