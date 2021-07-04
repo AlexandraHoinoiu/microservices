@@ -36,7 +36,9 @@ class PostModel extends Neo4jModel
         WHERE ID(post) = $id
         return post.imgPath as filename"
         );
-        $awsClient->deleteFile(substr($result->first()->get('filename'), 53));
+        if (!empty($result->first()->get('filename'))) {
+            $awsClient->deleteFile(substr($result->first()->get('filename'), 53));
+        }
         return $this->neo4jClient->run("MATCH (post:$this->label) WHERE ID(post) = $id DETACH DELETE post");
     }
 
